@@ -2,7 +2,7 @@ FROM node:20-alpine3.20 AS frontend-builder
 
 WORKDIR /app
 
-COPY web/package*.json ./
+COPY web/package.json ./
 
 RUN npm install
 
@@ -33,5 +33,6 @@ COPY --from=frontend-builder /app/dist ./web/dist
 ENV NODE_ENV=production
 
 EXPOSE 3000/tcp
+
 
 CMD ["npm", "start"] 
