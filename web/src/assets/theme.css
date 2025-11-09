@@ -81,7 +81,7 @@ html.dark {
   /* --- 搜索框 (Home) --- */
   --search-bg: #b3b7b83b;
   --search-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  --placeholder-color: #999999;
+  --placeholder-color: #BBBBBB;
   --search-btn-hover-bg: #3367d6;
   --engine-btn-hover-bg: rgba(255, 255, 255, 0.1);
 
