@@ -1,0 +1,46 @@
+/* 1. 默认 (Light Mode) 颜色 */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #333333;
+  --card-bg: #f4f4f4;
+  --card-border: #e0e0e0;
+  --link-color: #007bff;
+  --menu-bg: #f8f8f8;
+  
+  /* 菜单栏的新变量 */
+  --menu-text-color: #333333; /* 菜单文字(浅) */
+  --menu-active-color: #007bff; /* 菜单激活(浅) */
+  --menu-text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  --submenu-bg: rgba(255, 255, 255, 0.85); /* 子菜单背景(浅) */
+  --submenu-border: rgba(0, 0, 0, 0.1);
+  --submenu-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  --submenu-hover-bg: rgba(0, 123, 255, 0.1);
+  --submenu-active-bg: rgba(0, 123, 255, 0.2);
+}
+
+/* 2. Dark Mode 颜色 */
+html.dark {
+  --bg-color: #121212;
+  --text-color: #eeeeee;
+  --card-bg: #1e1e1e;
+  --card-border: #333333;
+  --link-color: #61afef;
+  --menu-bg: #2a2a2a;
+  
+  /* 菜单栏的新变量 */
+  --menu-text-color: #fff; /* 菜单文字(深) */
+  --menu-active-color: #399dff; /* 菜单激活(深) */
+  --menu-text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --submenu-bg: rgba(50, 50, 50, 0.85); /* 子菜单背景(深) */
+  --submenu-border: rgba(255, 255, 255, 0.15);
+  --submenu-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  --submenu-hover-bg: rgba(57, 157, 255, 0.25);
+  --submenu-active-bg: rgba(57, 157, 255, 0.35);
+}
+
+/* 3. 全局应用 */
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
+}
