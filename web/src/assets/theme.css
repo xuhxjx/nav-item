@@ -1,13 +1,21 @@
 /* 1. 默认 (Light Mode) 颜色 */
 :root {
+  /* --- 核心 --- */
   --bg-color: #ffffff;
   --text-color: #333333;
+  --text-color-light: #555555;
+  --link-color: #007bff;
+  --bg-overlay: rgba(255, 255, 255, 0.3); /* 浅色蒙版 */
+
+  /* --- 卡片 (CardGrid) --- */
   --card-bg: #f4f4f4;
   --card-border: #e0e0e0;
-  --link-color: #007bff;
+  --card-hover-bg: #e9e9e9;
+  --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --card-hover-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+
+  /* --- 菜单栏 (MenuBar) --- */
   --menu-bg: #f8f8f8;
-  
-  /* 菜单栏变量 */
   --menu-text-color: #333333;
   --menu-active-color: #007bff;
   --menu-text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
@@ -17,22 +25,50 @@
   --submenu-hover-bg: rgba(0, 123, 255, 0.1);
   --submenu-active-bg: rgba(0, 123, 255, 0.2);
 
-  /* *** 把下面这些新变量加到 :root {...} 里 *** */
-  --card-hover-bg: #e9e9e9; /* 卡片悬停背景(浅) */
-  --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  --card-hover-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+  /* --- 搜索框 (Home) --- */
+  --search-bg: rgba(0, 0, 0, 0.05);
+  --search-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  --placeholder-color: #888888;
+  --search-btn-hover-bg: #f0f0f0;
+  --engine-btn-hover-bg: rgba(0, 0, 0, 0.1);
+
+  /* --- 广告 (Home) --- */
+  --ad-bg: #ffffff;
+
+  /* --- 弹窗 (Home) --- */
+  --modal-overlay-bg: rgba(0, 0, 0, 0.5);
+  --modal-bg: #ffffff;
+  --modal-header-bg: #f9f9f9;
+  --modal-header-border: #e5e7eb;
+  --modal-text: #111827;
+  --modal-text-light: #6b7280;
+  --modal-btn-hover-bg: #f3f4f6;
+  --modal-btn-hover-color: #cf1313;
+  --modal-card-bg: #f3f4f6;
+  --modal-card-border: transparent;
+  --modal-card-hover-bg: #e5e7eb;
+  --modal-placeholder-bg: #e5e7eb;
+  --modal-placeholder-text: #6b7280;
 }
 
 /* 2. Dark Mode 颜色 */
 html.dark {
+  /* --- 核心 --- */
   --bg-color: #121212;
   --text-color: #eeeeee;
+  --text-color-light: rgba(255, 255, 255, 0.8);
+  --link-color: #61afef;
+  --bg-overlay: rgba(0, 0, 0, 0.3); /* 暗黑蒙版 */
+
+  /* --- 卡片 (CardGrid) --- */
   --card-bg: #1e1e1e;
   --card-border: #333333;
-  --link-color: #61afef;
+  --card-hover-bg: #2a2a2a;
+  --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  --card-hover-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+
+  /* --- 菜单栏 (MenuBar) --- */
   --menu-bg: #2a2a2a;
-  
-  /* 菜单栏变量 */
   --menu-text-color: #fff;
   --menu-active-color: #399dff;
   --menu-text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
@@ -42,10 +78,30 @@ html.dark {
   --submenu-hover-bg: rgba(57, 157, 255, 0.25);
   --submenu-active-bg: rgba(57, 157, 255, 0.35);
 
-  /* *** 把下面这些新变量加到 html.dark {...} 里 *** */
-  --card-hover-bg: #2a2a2a; /* 卡片悬停背景(深) */
-  --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-  --card-hover-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+  /* --- 搜索框 (Home) --- */
+  --search-bg: #b3b7b83b;
+  --search-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  --placeholder-color: #999999;
+  --search-btn-hover-bg: #3367d6;
+  --engine-btn-hover-bg: rgba(255, 255, 255, 0.1);
+
+  /* --- 广告 (Home) --- */
+  --ad-bg: #1e1e1e;
+
+  /* --- 弹窗 (Home) --- */
+  --modal-overlay-bg: rgba(0, 0, 0, 0.7);
+  --modal-bg: #2a2a2e;
+  --modal-header-bg: #333333;
+  --modal-header-border: #444444;
+  --modal-text: #eeeeee;
+  --modal-text-light: #aaaaaa;
+  --modal-btn-hover-bg: #444444;
+  --modal-btn-hover-color: #ff4d4d;
+  --modal-card-bg: #333333;
+  --modal-card-border: transparent;
+  --modal-card-hover-bg: #444444;
+  --modal-placeholder-bg: #444444;
+  --modal-placeholder-text: #aaaaaa;
 }
 
 /* 3. 全局应用 */
