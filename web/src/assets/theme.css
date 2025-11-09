@@ -2,15 +2,15 @@
 :root {
   /* --- 核心 --- */
   --bg-color: #ffffff;
-  --text-color: #333333;
+  --text-color: #333333; /* 浅色模式用深色文字 */
   --text-color-light: #555555;
   --link-color: #007bff;
   --bg-overlay: rgba(255, 255, 255, 0.3); /* 浅色蒙版 */
 
-  /* --- 卡片 (CardGrid) --- (浅色模式保持白色透明) --- */
-  --card-bg: rgba(255, 255, 255, 0.6);
-  --card-border: transparent;
-  --card-hover-bg: rgba(255, 255, 255, 0.8);
+  /* --- 卡片 (CardGrid) --- [我修改了这里] --- */
+  --card-bg: rgba(255, 255, 255, 0.15);     /* 浅色-乳白色透明 (你指定的值) */
+  --card-border: rgba(255, 255, 255, 0.2);  /* 浅色-白色边框 */
+  --card-hover-bg: rgba(255, 255, 255, 0.3);  /* 浅色-悬停 */
   --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
   --card-hover-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   
@@ -55,15 +55,15 @@
 html.dark {
   /* --- 核心 --- */
   --bg-color: #121212;
-  --text-color: #eeeeee;
+  --text-color: #eeeeee; /* 暗黑模式用浅色文字 */
   --text-color-light: rgba(255, 255, 255, 0.8);
   --link-color: #61afef;
   --bg-overlay: rgba(0, 0, 0, 0.3); /* 暗黑蒙版 */
 
-  /* --- 卡片 (CardGrid) --- [我修改了这里] --- */
-  --card-bg: rgba(0, 0, 0, 0.2);            /* 暗黑-黑色透明 (20% 黑) */
+  /* --- 卡片 (CardGrid) --- [我保持了这里的“黑色透明”] --- */
+  --card-bg: rgba(0, 0, 0, 0.2);            /* 暗黑-黑色透明 */
   --card-border: rgba(255, 255, 255, 0.1); /* 暗黑-加一点点白边 */
-  --card-hover-bg: rgba(0, 0, 0, 0.4);      /* 暗黑-悬停 (40% 黑) */
+  --card-hover-bg: rgba(0, 0, 0, 0.4);      /* 暗黑-悬停 */
   --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   --card-hover-shadow: 0 3px 6px rgba(0, 0, 0, 0.5);
 
