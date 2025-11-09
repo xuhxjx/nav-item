@@ -7,10 +7,10 @@
   --link-color: #007bff;
   --bg-overlay: rgba(255, 255, 255, 0.3); /* 浅色蒙版 */
 
-  /* --- 卡片 (CardGrid) --- [我修改了这里] --- */
-  --card-bg: rgba(255, 255, 255, 0.6);      /* 浅色-透明卡片 */
-  --card-border: transparent;             /* 浅色-无边框 */
-  --card-hover-bg: rgba(255, 255, 255, 0.8); /* 浅色-悬停 */
+  /* --- 卡片 (CardGrid) --- (浅色模式保持白色透明) --- */
+  --card-bg: rgba(255, 255, 255, 0.6);
+  --card-border: transparent;
+  --card-hover-bg: rgba(255, 255, 255, 0.8);
   --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
   --card-hover-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   
@@ -61,11 +61,11 @@ html.dark {
   --bg-overlay: rgba(0, 0, 0, 0.3); /* 暗黑蒙版 */
 
   /* --- 卡片 (CardGrid) --- [我修改了这里] --- */
-  --card-bg: rgba(255, 255, 255, 0.15);     /* 暗黑-透明卡片 (你原来的值) */
-  --card-border: transparent;            /* 暗黑-无边框 */
-  --card-hover-bg: rgba(255, 255, 255, 0.3);/* 暗黑-悬停 (你原来的值) */
-  --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-  --card-hover-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+  --card-bg: rgba(0, 0, 0, 0.2);            /* 暗黑-黑色透明 (20% 黑) */
+  --card-border: rgba(255, 255, 255, 0.1); /* 暗黑-加一点点白边 */
+  --card-hover-bg: rgba(0, 0, 0, 0.4);      /* 暗黑-悬停 (40% 黑) */
+  --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --card-hover-shadow: 0 3px 6px rgba(0, 0, 0, 0.5);
 
   /* --- 菜单栏 (MenuBar) --- */
   --menu-bg: #2a2a2a;
