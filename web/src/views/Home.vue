@@ -277,7 +277,7 @@ function handleLogoError(event) {
   display: flex;
   align-items: center;
   background: var(--search-bg); /* 替换 #b3b7b83b */
-  border-radius: 20px;
+  border-radius: 12px;
   padding: 0.3rem;
   box-shadow: var(--search-shadow); /* 替换 rgba(0,0,0,0.1) */
   backdrop-filter: blur(10px);
@@ -291,7 +291,7 @@ function handleLogoError(event) {
   border: none;
   background: transparent;
   padding: .1rem .5rem;
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: var(--text-color); /* 替换 #ffffff */
   outline: none;
 }
@@ -317,8 +317,8 @@ function handleLogoError(event) {
   color: var(--text-color); /* 替换 #ffffff */
   border: none;
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
+  width: 32px;
+  height: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -623,3 +623,4 @@ function handleLogoError(event) {
   }
 }
 </style>
+
