@@ -7,13 +7,13 @@
   --link-color: #007bff;
   --bg-overlay: rgba(255, 255, 255, 0.3); /* 浅色蒙版 */
 
-  /* --- 卡片 (CardGrid) --- */
-  --card-bg: #f4f4f4;
-  --card-border: #e0e0e0;
-  --card-hover-bg: #e9e9e9;
-  --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  --card-hover-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
-
+  /* --- 卡片 (CardGrid) --- [我修改了这里] --- */
+  --card-bg: rgba(255, 255, 255, 0.6);      /* 浅色-透明卡片 */
+  --card-border: transparent;             /* 浅色-无边框 */
+  --card-hover-bg: rgba(255, 255, 255, 0.8); /* 浅色-悬停 */
+  --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  --card-hover-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  
   /* --- 菜单栏 (MenuBar) --- */
   --menu-bg: #f8f8f8;
   --menu-text-color: #333333;
@@ -60,10 +60,10 @@ html.dark {
   --link-color: #61afef;
   --bg-overlay: rgba(0, 0, 0, 0.3); /* 暗黑蒙版 */
 
-  /* --- 卡片 (CardGrid) --- */
-  --card-bg: #1e1e1e;
-  --card-border: #333333;
-  --card-hover-bg: #2a2a2a;
+  /* --- 卡片 (CardGrid) --- [我修改了这里] --- */
+  --card-bg: rgba(255, 255, 255, 0.15);     /* 暗黑-透明卡片 (你原来的值) */
+  --card-border: transparent;            /* 暗黑-无边框 */
+  --card-hover-bg: rgba(255, 255, 255, 0.3);/* 暗黑-悬停 (你原来的值) */
   --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
   --card-hover-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
 
