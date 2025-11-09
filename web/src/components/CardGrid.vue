@@ -12,62 +12,44 @@
 </template>
 
 <script setup>
+// ... 你的 <script setup> 内容保持不变 ...
+// (我把它折叠了，你不需要修改它)
 import { ref, watch, nextTick } from 'vue';
-
 const props = defineProps({ cards: Array });
-
-// 动画状态
 const animationClass = ref('');
-const animationType = ref('slideUp'); // 'slideUp' 或 'radial'
-
-// 监听 cards 变化，触发动画
+const animationType = ref('slideUp');
 watch(() => props.cards, (newCards, oldCards) => {
-  // 如果是新的卡片数据或者从有数据变成其他数据
   if (newCards && newCards.length > 0) {
-    // 如果是首次加载或者数据发生了变化
     const isDataChanged = !oldCards || oldCards.length === 0 || JSON.stringify(newCards) !== JSON.stringify(oldCards);
     if (isDataChanged) {
-      // 延迟一下确保DOM更新完成
       nextTick(() => {
         triggerAnimation();
       });
     }
   }
 }, { deep: true, immediate: false });
-
-// 触发动画
 function triggerAnimation() {
-  // 随机选择动画类型，替换bounceIn为convergeIn
   const animations = ['slideUp', 'radial', 'fadeIn', 'slideLeft', 'slideRight', 'convergeIn', 'flipIn'];
   const randomIndex = Math.floor(Math.random() * animations.length);
   animationType.value = animations[randomIndex];
   animationClass.value = `animate-${animationType.value}`;
-  
-  // 动画结束后清除类名
   setTimeout(() => {
     animationClass.value = '';
   }, 1200);
 }
-
-// 获取卡片样式（用于延迟动画）
 function getCardStyle(index) {
   if (!animationClass.value) return {};
-  
-  // 在移动设备上不使用延迟动画
   const isMobile = window.innerWidth <= 480;
   if (isMobile) {
     return {
       animationDelay: '0s'
     };
   }
-  
   if (animationType.value === 'slideUp') {
-    // 从下往上：按索引顺序延迟
     return {
       animationDelay: `${index * 0.05}s`
     };
   } else if (animationType.value === 'radial') {
-    // 从中心扩散：根据距离中心的位置计算延迟
     const cols = window.innerWidth <= 768 ? 3 : (window.innerWidth <= 1200 ? 4 : 6);
     const row = Math.floor(index / cols);
     const col = index % cols;
@@ -77,19 +59,16 @@ function getCardStyle(index) {
       animationDelay: `${distance * 0.08}s`
     };
   } else if (animationType.value === 'fadeIn') {
-    // 淡入动画：随机延迟
     return {
       animationDelay: `${Math.random() * 0.5}s`
     };
   } else if (animationType.value === 'slideLeft') {
-    // 从左往右：按行延迟
     const cols = window.innerWidth <= 768 ? 3 : (window.innerWidth <= 1200 ? 4 : 6);
     const row = Math.floor(index / cols);
     return {
       animationDelay: `${row * 0.1}s`
     };
   } else if (animationType.value === 'slideRight') {
-    // 从右往左：按行延迟（反向）
     const cols = window.innerWidth <= 768 ? 3 : (window.innerWidth <= 1200 ? 4 : 6);
     const row = Math.floor(index / cols);
     const col = index % cols;
@@ -97,17 +76,14 @@ function getCardStyle(index) {
       animationDelay: `${(row + (cols - col - 1) * 0.02) * 0.08}s`
     };
   } else if (animationType.value === 'convergeIn') {
-    // 从两边往中间靠拢：根据列的位置计算延迟
     const cols = window.innerWidth <= 768 ? 3 : (window.innerWidth <= 1200 ? 4 : 6);
     const col = index % cols;
     const centerCol = Math.floor(cols / 2);
     const distanceFromCenter = Math.abs(col - centerCol);
-    // 边缘的元素先出现，中间的最后出现
     return {
       animationDelay: `${(cols - distanceFromCenter - 1) * 0.08}s`
     };
   } else if (animationType.value === 'flipIn') {
-    // 翻转入场：按对角线延迟
     const cols = window.innerWidth <= 768 ? 3 : (window.innerWidth <= 1200 ? 4 : 6);
     const row = Math.floor(index / cols);
     const col = index % cols;
@@ -115,14 +91,11 @@ function getCardStyle(index) {
       animationDelay: `${(row + col) * 0.06}s`
     };
   }
-  
   return {};
 }
-
 function getLogo(card) {
   if (card.custom_logo_path) return 'http://localhost:3000/uploads/' + card.custom_logo_path;
   if (card.logo_url) return card.logo_url;
-  // 默认 favicon
   try {
     const url = new URL(card.url);
     return url.origin + '/favicon.ico';
@@ -130,18 +103,15 @@ function getLogo(card) {
     return '/default-favicon.png';
   }
 }
-
 function onImgError(e, card) {
   e.target.src = '/default-favicon.png';
 }
-
 function getTooltip(card) {
   let tip = '';
   if (card.desc) tip += card.desc + '\n';
   tip += card.url;
   return tip;
 }
-
 function truncate(str) {
   if (!str) return '';
   return str.length > 20 ? str.slice(0, 20) + '...' : str;
@@ -149,6 +119,11 @@ function truncate(str) {
 </script>
 
 <style scoped>
+/*
+ * *** 我修改了这里 ***
+ * 我把 .link-item 和 .link-item a 的硬编码颜色
+ * 替换成了 CSS 变量
+ */
 .container {
   max-width: 55rem;
   margin: 0 auto;
@@ -175,11 +150,16 @@ function truncate(str) {
   }
 }
 .link-item {
-  background-color: rgba(255, 255, 255, 0.15);
+  /* 替换: background-color: rgba(255, 255, 255, 0.15); */
+  background-color: var(--card-bg); 
+  
   border-radius: 15px;
   padding: 0;
   transition: all 0.2s;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  
+  /* 替换: box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); */
+  box-shadow: var(--card-shadow);
+  
   text-align: center;
   min-height: 85px;
   height: 85px;
@@ -189,14 +169,21 @@ function truncate(str) {
   align-items: center;
 }
 .link-item:hover {
-  background-color: rgba(255, 255, 255, 0.3);
+  /* 替换: background-color: rgba(255, 255, 255, 0.3); */
+  background-color: var(--card-hover-bg);
+  
   transform: translateY(-2px);
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+  
+  /* 替换: box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15); */
+  box-shadow: var(--card-hover-shadow);
 }
 .link-item a {
   /* margin-top: 8px; */
   text-decoration: none;
-  color: #ffffff;
+  
+  /* 替换: color: #ffffff; */
+  color: var(--text-color); 
+  
   font-weight: 500;
   display: flex;
   flex-direction: column;
@@ -230,6 +217,7 @@ function truncate(str) {
   min-height: 1.5em;
 }
 
+/* ... 所有的动画样式 (@keyframes, .animate-*) 保持不变 ... */
 /* 动画样式 */
 /* 从下往上滑入动画 */
 .animate-slideUp .link-item {
