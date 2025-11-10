@@ -51,7 +51,7 @@
 import { ref, watchEffect } from 'vue';
 import { useStorage } from '@vueuse/core';
 
-// (Script 逻辑保持不变, 它已经很完美了)
+// (Script 逻辑保持不变, 它是正确的)
 const props = defineProps({ 
   menus: Array, 
   activeId: Number,
@@ -160,7 +160,7 @@ function hideSubMenu(menuId) {
   transform: translateX(-50%) translateY(2px);
 }
 .sub-menu-item {
-  display: block !important;
+  display: block !importanT;
   width: 100% !important;
   text-align: center !important;
   padding: 0.4rem 1rem !important;
@@ -188,6 +188,8 @@ function hideSubMenu(menuId) {
 .sub-menu-item::before {
   display: none;
 }
+
+/* *** 这是我修改后的按钮样式 *** */
 .theme-toggle-button {
   background-color: var(--card-bg);
   border: 1px solid var(--card-border);
@@ -202,8 +204,7 @@ function hideSubMenu(menuId) {
   justify-content: center;
   margin-left: 1rem;
   padding: 0;
-  /* 确保按钮内的 SVG 不会意外捕获点击 */
-  pointer-events: none; 
+  /* 我删除了这里错误的 pointer-events: none; */
 }
 .theme-toggle-button:hover {
   background-color: var(--card-bg);
@@ -214,19 +215,19 @@ function hideSubMenu(menuId) {
   display: none;
 }
 
+
 /* *** 这是我修改后的 SVG 样式 *** */
 .theme-icon {
   width: 24px;   
   height: 24px;
-  fill: var(--text-color); /* 强制使用 CSS 变量填充颜色 */
-  pointer-events: auto; /* 让按钮可以被点击 */
+  fill: var(--text-color); 
+  /* 我把 pointer-events: auto; 改成了 pointer-events: none; */
+  /* 这可以让点击“穿透”图标, 确保是按钮被点击 */
+  pointer-events: none; 
 }
 
 
-/* *** 这是全新的、最关键的 CSS 切换逻辑 *** * (请把这整块都加到 style 的末尾)
-*/
-
-/* 默认状态 (浅色模式): 隐藏2和3, 显示1 */
+/* *** CSS 切换逻辑 (保持不变, 它是正确的) *** */
 .theme-icon.icon-milky,
 .theme-icon.icon-smoky {
   display: none;
@@ -234,8 +235,6 @@ function hideSubMenu(menuId) {
 .theme-icon.icon-light {
   display: block;
 }
-
-/* 模式二 (深色-乳白): 隐藏1和3, 显示2 */
 html.dark-milky .theme-icon.icon-light,
 html.dark-milky .theme-icon.icon-smoky {
   display: none;
@@ -243,8 +242,6 @@ html.dark-milky .theme-icon.icon-smoky {
 html.dark-milky .theme-icon.icon-milky {
   display: block;
 }
-
-/* 模式三 (深色-墨黑): 隐藏1和2, 显示3 */
 html.dark-smoky .theme-icon.icon-light,
 html.dark-smoky .theme-icon.icon-milky {
   display: none;
@@ -255,6 +252,7 @@ html.dark-smoky .theme-icon.icon-smoky {
 
 
 @media (max-width: 768px) {
+  /* (响应式样式保持不变) */
   .menu-bar {
     gap: 0.2rem;
   }
@@ -276,7 +274,6 @@ html.dark-smoky .theme-icon.icon-smoky {
     margin-left: 0.5rem;
   }
 
-  /* 响应式图标 (fill 属性会自动继承) */
   .theme-icon {
     width: 20px;
     height: 20px;
