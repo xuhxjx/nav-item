@@ -20,7 +20,7 @@
         :class="{ 'show': hoveredMenuId === menu.id }"
       >
         <button 
-          v-for="subMenu in menu.subMenus" 
+          v-for="subMenu in subMenus" 
           :key="subMenu.id"
           @click="$emit('select', subMenu, menu)"
           :class="{active: subMenu.id === activeSubMenuId}"
@@ -31,17 +31,16 @@
       </div>
     </div>
 
-    <button @click="toggleDark()" class="theme-toggle-button" title="切换深浅模式">
-      <span v-if="isDark">☀️</span>
-      <span v-else>🌙</span>
-    </button>
+    <button @click="cycleTheme()" class="theme-toggle-button" title="切换显示模式">
+      <span v-if="theme === 'light'">☀️</span>     <span v-if="theme === 'dark-milky'">🌙</span> <span v-if="theme === 'dark-smoky'">🌑</span> </button>
   </nav>
 </template>
 
 <script setup>
-import { ref } from 'vue';
-// *** 我新添加的 import ***
-import { useDark, useToggle } from '@vueuse/core';
+import { ref, watchEffect } from 'vue';
+// *** 我替换了这里的 import ***
+// 删除了 useDark 和 useToggle, 换成了 useStorage
+import { useStorage } from '@vueuse/core';
 
 const props = defineProps({ 
   menus: Array, 
@@ -51,16 +50,45 @@ const props = defineProps({
 
 const hoveredMenuId = ref(null);
 
-// *** 我新添加的逻辑 ***
-const isDark = useDark();
-const toggleDark = useToggle(isDark);
+// *** 这是全新的三模式切换逻辑 ***
 
+// 1. 从 localStorage 读取设置, 默认是 'light'
+//    现在有三种状态: 'light', 'dark-milky', 'dark-smoky'
+const theme = useStorage('my-nav-theme-preference', 'light');
+
+// 2. 循环切换的函数
+function cycleTheme() {
+  if (theme.value === 'light') {
+    theme.value = 'dark-milky';
+  } else if (theme.value === 'dark-milky') {
+    theme.value = 'dark-smoky';
+  } else {
+    theme.value = 'light';
+  }
+}
+
+// 3. 监视 theme.value 的变化, 自动给 <html> 添加/删除 class
+watchEffect(() => {
+  const html = document.documentElement;
+  
+  // 先清除所有可能的 class
+  html.classList.remove('dark-milky', 'dark-smoky');
+  
+  // 根据当前 theme 的值, 添加对应的 class
+  if (theme.value === 'dark-milky') {
+    html.classList.add('dark-milky');
+  } else if (theme.value === 'dark-smoky') {
+    html.classList.add('dark-smoky');
+  }
+  // 如果是 'light', 我们什么也不加, :root 默认就是 light
+});
+
+// *** 旧的菜单逻辑 (保持不变) ***
 function showSubMenu(menuId) {
   hoveredMenuId.value = menuId;
 }
 
 function hideSubMenu(menuId) {
-  // 延迟隐藏，给用户时间移动到子菜单
   setTimeout(() => {
     if (hoveredMenuId.value === menuId) {
       hoveredMenuId.value = null;
@@ -70,8 +98,9 @@ function hideSubMenu(menuId) {
 </script>
 
 <style scoped>
-/* *** 我已将下面所有的硬编码颜色 (如 #fff, #399dff) 
-  *** 替换为 CSS 变量 (如 var(--menu-text-color)) 
+/* <style> 部分不需要任何改动, 
+  因为它全部使用的都是 CSS 变量,
+  所以原封不动即可。
 */
 
 .menu-bar {
@@ -89,13 +118,13 @@ function hideSubMenu(menuId) {
 .menu-bar button {
   background: transparent;
   border: none;
-  color: var(--menu-text-color); /* 替换 #fff */
+  color: var(--menu-text-color);
   font-size: 16px;
   font-weight: 500;
   padding: 0.8rem 2rem;
   cursor: pointer;
   transition: all 0.3s ease;
-  text-shadow: var(--menu-text-shadow); /* 替换 rgba(0,0,0,0.3) */
+  text-shadow: var(--menu-text-shadow);
   box-shadow: none;
   border-radius: 8px;
   position: relative;
@@ -109,18 +138,18 @@ function hideSubMenu(menuId) {
   left: 50%;
   width: 0;
   height: 2px;
-  background: var(--menu-active-color); /* 替换 #399dff */
+  background: var(--menu-active-color);
   transition: all 0.3s ease;
   transform: translateX(-50%);
 }
 
 .menu-bar button:hover {
-  color: var(--menu-active-color); /* 替换 #399dff */
+  color: var(--menu-active-color);
   transform: translateY(-1px);
 }
 
 .menu-bar button.active {
-  color: var(--menu-active-color); /* 替换 #399dff */
+  color: var(--menu-active-color);
 }
 
 .menu-bar button.active::before {
@@ -133,7 +162,7 @@ function hideSubMenu(menuId) {
   top: 100%;
   left: 50%;
   transform: translateX(-50%);
-  background: var(--submenu-bg); /* 替换 #5c595900 */
+  background: var(--submenu-bg);
   backdrop-filter: blur(8px);
   border-radius: 6px;
   min-width: 120px;
@@ -141,8 +170,8 @@ function hideSubMenu(menuId) {
   visibility: hidden;
   transition: all 0.2s ease;
   z-index: 1000;
-  box-shadow: var(--submenu-shadow); /* 替换 rgba(0,0,0,0.4) */
-  border: 1px solid var(--submenu-border); /* 替换 rgba(255,255,255,0.15) */
+  box-shadow: var(--submenu-shadow);
+  border: 1px solid var(--submenu-border);
   margin-top: -2px; 
 }
 
@@ -159,7 +188,7 @@ function hideSubMenu(menuId) {
   padding: 0.4rem 1rem !important;
   border: none !important;
   background: transparent !important;
-  color: var(--menu-text-color) !important; /* 替换 #fff */
+  color: var(--menu-text-color) !important;
   font-size: 14px !important;
   font-weight: 400 !important;
   cursor: pointer !important;
@@ -170,14 +199,14 @@ function hideSubMenu(menuId) {
 }
 
 .sub-menu-item:hover {
-  background: var(--submenu-hover-bg) !important; /* 替换 rgba(57,157,255,0.25) */
-  color: var(--menu-active-color) !important; /* 替换 #399dff */
+  background: var(--submenu-hover-bg) !important;
+  color: var(--menu-active-color) !important;
   transform: none !important;
 }
 
 .sub-menu-item.active {
-  background: var(--submenu-active-bg) !important; /* 替换 rgba(57,157,255,0.35) */
-  color: var(--menu-active-color) !important; /* 替换 #399dff */
+  background: var(--submenu-active-bg) !important;
+  color: var(--menu-active-color) !important;
   font-weight: 500 !important;
 }
 
@@ -185,11 +214,11 @@ function hideSubMenu(menuId) {
   display: none;
 }
 
-/* *** 我为切换按钮新加的样式 *** */
+/* 切换按钮的样式 (不需要改动) */
 .theme-toggle-button {
-  background-color: var(--card-bg); /* 使用已有的变量 */
-  border: 1px solid var(--card-border); /* 使用已有的变量 */
-  color: var(--text-color); /* 使用已有的变量 */
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  color: var(--text-color);
   border-radius: 50%;
   width: 40px;
   height: 40px;
@@ -198,18 +227,18 @@ function hideSubMenu(menuId) {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-left: 1rem; /* 给它一点空间 */
-  padding: 0; /* 移除默认 padding */
+  margin-left: 1rem;
+  padding: 0;
 }
 .theme-toggle-button:hover {
-  background-color: var(--card-bg); /* 确保 hover 样式一致 */
-  color: var(--text-color); /* 确保 hover 样式一致 */
-  transform: none; /* 移除父级的 :hover 效果 */
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  transform: none;
 }
 .theme-toggle-button::before {
-  display: none; /* 移除父级的 ::before 效果 */
+  display: none;
 }
-/* *** 响应式布局调整 *** */
+
 @media (max-width: 768px) {
   .menu-bar {
     gap: 0.2rem;
