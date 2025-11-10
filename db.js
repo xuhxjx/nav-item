@@ -152,7 +152,7 @@ db.serialize(() => {
             // Home
             { menu: 'Home', title: 'Nav', url: 'https://nav.hxjx.hidns.co/', logo_url: '', desc: '个人导航站'  },
             { menu: 'Home', title: 'Youtube', url: 'https://www.youtube.com', logo_url: 'https://img.icons8.com/ios-filled/100/ff1d06/youtube-play.png', desc: '全球最大的视频社区'  },
-            { menu: 'Home', title: 'Gcp', url: 'https://cloud.google.com/?hl=zh-cn', logo_url: 'https://ssl.gstatic.com/ui/v1/icons/mail/rfr/gmail.ico', desc: ''  },
+            { menu: 'Home', title: 'Gcp', url: 'https://cloud.google.com/?hl=zh-cn', logo_url: '', desc: ''  },
             { menu: 'Home', title: 'GitHub', url: 'https://github.com', logo_url: '', desc: '全球最大的代码托管平台'  },
             { menu: 'Home', title: 'ip.sb', url: 'https://ip.sb', logo_url: '', desc: 'ip地址查询'  },
             { menu: 'Home', title: 'Cloudflare', url: 'https://dash.cloudflare.com', logo_url: '', desc: '全球最大的cdn服务商'  },
@@ -337,3 +337,4 @@ db.serialize(() => {
 
 
 module.exports = db; 
+
