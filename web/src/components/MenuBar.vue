@@ -32,15 +32,15 @@
     </div>
 
     <button @click="cycleTheme()" class="theme-toggle-button" title="切换显示模式">
-      <svg v-if="theme === 'light'" class="theme-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <svg class="theme-icon icon-light" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
         <path d="M12 2.25a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 0112 2.25zM7.5 4.06c.26 0 .52.1.72.29l1.06 1.06a.75.75 0 11-1.06 1.06l-1.06-1.06a.75.75 0 01.29-.72.75.75 0 01.75-.29zm10.94 2.19c.26 0 .52.1.72.29l1.06 1.06a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 011.06-1.06.75.75 0 01.29.72zM4.06 7.5c0-.26.1-.52.29-.72l1.06-1.06a.75.75 0 011.06 1.06L5.12 7.78a.75.75 0 01-.72.29.75.75 0 01-.75-.75.75.75 0 01.29-.72zM21.75 12a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5a.75.75 0 01.75.75zM4.5 12a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5a.75.75 0 01.75-.75zm7.5 7.5a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5a.75.75 0 01.75-.75zm-3.44-2.19a.75.75 0 011.06 1.06l-1.06 1.06a.75.75 0 11-1.06-1.06l1.06-1.06.72.29zM18.94 16.5a.75.75 0 011.06 1.06l-1.06 1.06a.75.75 0 11-1.06-1.06l1.06-1.06zM12 7.5a4.5 4.5 0 110 9 4.5 4.5 0 010-9z" />
       </svg>
       
-      <svg v-if="theme === 'dark-milky'" class="theme-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <svg class="theme-icon icon-milky" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
         <path fill-rule="evenodd" d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 004.463-.69a.75.75 0 01.981.98 10.503 10.503 0 01-5.455 2.593 10.5 10.5 0 01-11.66-11.66 10.503 10.503 0 012.593-5.455.75.75 0 01.819.162z" clip-rule="evenodd" />
       </svg>
       
-      <svg v-if="theme === 'dark-smoky'" class="theme-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <svg class="theme-icon icon-smoky" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
         <path fill-rule="evenodd" d="M12 21a9 9 0 100-18 9 9 0 000 18z" clip-rule="evenodd" />
       </svg>
     </button>
@@ -51,7 +51,7 @@
 import { ref, watchEffect } from 'vue';
 import { useStorage } from '@vueuse/core';
 
-// (Script 逻辑保持不变)
+// (Script 逻辑保持不变, 它已经很完美了)
 const props = defineProps({ 
   menus: Array, 
   activeId: Number,
@@ -202,6 +202,8 @@ function hideSubMenu(menuId) {
   justify-content: center;
   margin-left: 1rem;
   padding: 0;
+  /* 确保按钮内的 SVG 不会意外捕获点击 */
+  pointer-events: none; 
 }
 .theme-toggle-button:hover {
   background-color: var(--card-bg);
@@ -212,14 +214,45 @@ function hideSubMenu(menuId) {
   display: none;
 }
 
-/* *** 这是我修改后的 SVG 样式 ***
-  - 我把 'color' 改成了 'fill'
-*/
+/* *** 这是我修改后的 SVG 样式 *** */
 .theme-icon {
   width: 24px;   
   height: 24px;
-  fill: var(--text-color); /* <-- 改成 fill 属性 */
+  fill: var(--text-color); /* 强制使用 CSS 变量填充颜色 */
+  pointer-events: auto; /* 让按钮可以被点击 */
 }
+
+
+/* *** 这是全新的、最关键的 CSS 切换逻辑 *** * (请把这整块都加到 style 的末尾)
+*/
+
+/* 默认状态 (浅色模式): 隐藏2和3, 显示1 */
+.theme-icon.icon-milky,
+.theme-icon.icon-smoky {
+  display: none;
+}
+.theme-icon.icon-light {
+  display: block;
+}
+
+/* 模式二 (深色-乳白): 隐藏1和3, 显示2 */
+html.dark-milky .theme-icon.icon-light,
+html.dark-milky .theme-icon.icon-smoky {
+  display: none;
+}
+html.dark-milky .theme-icon.icon-milky {
+  display: block;
+}
+
+/* 模式三 (深色-墨黑): 隐藏1和2, 显示3 */
+html.dark-smoky .theme-icon.icon-light,
+html.dark-smoky .theme-icon.icon-milky {
+  display: none;
+}
+html.dark-smoky .theme-icon.icon-smoky {
+  display: block;
+}
+
 
 @media (max-width: 768px) {
   .menu-bar {
