@@ -1,16 +1,18 @@
-/* 1. 默认 (Light Mode) 颜色 */
+/* 1. 模式一：浅色模式 (Light) */
+/* 这是默认值, 对应 'light' */
 :root {
   /* --- 核心 --- */
   --bg-color: #ffffff;
-  --text-color: #333333; /* 浅色模式用深色文字 */
+  --text-color: #333333; 
   --text-color-light: #555555;
   --link-color: #007bff;
-  --bg-overlay: rgba(255, 255, 255, 0.3); /* 浅色蒙版 */
+  --bg-overlay: rgba(255, 255, 255, 0.3);
 
-  /* --- 卡片 (CardGrid) --- [我修改了这里] --- */
-  --card-bg: rgba(255, 255, 255, 0.15);     /* 浅色-乳白色透明 (你指定的值) */
-  --card-border: rgba(255, 255, 255, 0.2);  /* 浅色-白色边框 */
-  --card-hover-bg: rgba(255, 255, 255, 0.3);  /* 浅色-悬停 */
+  /* --- 卡片 (CardGrid) --- */
+  /* 你喜欢的“乳白色”卡片 */
+  --card-bg: rgba(255, 255, 255, 0.15);
+  --card-border: rgba(255, 255, 255, 0.2);
+  --card-hover-bg: rgba(255, 255, 255, 0.3);
   --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
   --card-hover-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   
@@ -51,21 +53,23 @@
   --modal-placeholder-text: #6b7280;
 }
 
-/* 2. Dark Mode 颜色 */
-html.dark {
+/* 2. 模式二：深色-乳白 (Dark - Milky) */
+/* 对应 'dark-milky' */
+html.dark-milky {
   /* --- 核心 --- */
   --bg-color: #121212;
-  --text-color: #eeeeee; /* 暗黑模式用浅色文字 */
+  --text-color: #eeeeee;
   --text-color-light: rgba(255, 255, 255, 0.8);
   --link-color: #61afef;
-  --bg-overlay: rgba(0, 0, 0, 0.3); /* 暗黑蒙版 */
+  --bg-overlay: rgba(0, 0, 0, 0.3);
 
-  /* --- 卡片 (CardGrid) --- [我保持了这里的“黑色透明”] --- */
-  --card-bg: rgba(0, 0, 0, 0.2);            /* 暗黑-黑色透明 */
-  --card-border: rgba(255, 255, 255, 0.1); /* 暗黑-加一点点白边 */
-  --card-hover-bg: rgba(0, 0, 0, 0.4);      /* 暗黑-悬停 */
-  --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-  --card-hover-shadow: 0 3px 6px rgba(0, 0, 0, 0.5);
+  /* --- 卡片 (CardGrid) --- */
+  /* 你喜欢的“乳白色”卡片 */
+  --card-bg: rgba(255, 255, 255, 0.15);
+  --card-border: rgba(255, 255, 255, 0.2);
+  --card-hover-bg: rgba(255, 255, 255, 0.3);
+  --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  --card-hover-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
 
   /* --- 菜单栏 (MenuBar) --- */
   --menu-bg: #2a2a2a;
@@ -81,7 +85,7 @@ html.dark {
   /* --- 搜索框 (Home) --- */
   --search-bg: #b3b7b83b;
   --search-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  --placeholder-color: #BBBBBB;
+  --placeholder-color: #BBBBBB; /* 亮的提示字 */
   --search-btn-hover-bg: #3367d6;
   --engine-btn-hover-bg: rgba(255, 255, 255, 0.1);
 
@@ -104,7 +108,63 @@ html.dark {
   --modal-placeholder-text: #aaaaaa;
 }
 
-/* 3. 全局应用 */
+/* 3. 模式三：深色-墨黑 (Dark - Smoky) */
+/* 对应 'dark-smoky' */
+html.dark-smoky {
+  /* --- 核心 --- */
+  --bg-color: #121212;
+  --text-color: #eeeeee;
+  --text-color-light: rgba(255, 255, 255, 0.8);
+  --link-color: #61afef;
+  --bg-overlay: rgba(0, 0, 0, 0.3);
+
+  /* --- 卡片 (CardGrid) --- */
+  /* 你喜欢的“黑色透明”卡片 */
+  --card-bg: rgba(0, 0, 0, 0.2);
+  --card-border: rgba(255, 255, 255, 0.1);
+  --card-hover-bg: rgba(0, 0, 0, 0.4);
+  --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --card-hover-shadow: 0 3px 6px rgba(0, 0, 0, 0.5);
+
+  /* --- 菜单栏 (MenuBar) --- */
+  --menu-bg: #2a2a2a;
+  --menu-text-color: #fff;
+  --menu-active-color: #399dff;
+  --menu-text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --submenu-bg: rgba(50, 50, 50, 0.85);
+  --submenu-border: rgba(255, 255, 255, 0.15);
+  --submenu-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  --submenu-hover-bg: rgba(57, 157, 255, 0.25);
+  --submenu-active-bg: rgba(57, 157, 255, 0.35);
+
+  /* --- 搜索框 (Home) --- */
+  --search-bg: #b3b7b83b;
+  --search-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  --placeholder-color: #BBBBBB; /* 亮的提示字 */
+  --search-btn-hover-bg: #3367d6;
+  --engine-btn-hover-bg: rgba(255, 255, 255, 0.1);
+
+  /* --- 广告 (Home) --- */
+  --ad-bg: #1e1e1e;
+
+  /* --- 弹窗 (Home) --- */
+  --modal-overlay-bg: rgba(0, 0, 0, 0.7);
+  --modal-bg: #2a2a2e;
+  --modal-header-bg: #333333;
+  --modal-header-border: #444444;
+  --modal-text: #eeeeee;
+  --modal-text-light: #aaaaaa;
+  --modal-btn-hover-bg: #444444;
+  --modal-btn-hover-color: #ff4d4d;
+  --modal-card-bg: #333333;
+  --modal-card-border: transparent;
+  --modal-card-hover-bg: #444444;
+  --modal-placeholder-bg: #444444;
+  --modal-placeholder-text: #aaaaaa;
+}
+
+
+/* 4. 全局应用 */
 body {
   background-color: var(--bg-color);
   color: var(--text-color);
