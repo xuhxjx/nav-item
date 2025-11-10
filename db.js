@@ -163,7 +163,7 @@ db.serialize(() => {
             { menu: 'Home', title: 'nezha', url: 'https://nz.363689.xyz', logo_url: 'https://nav.hxjx.hidns.co/icon/nz.svg', desc: 'nezha面板监控'  },
             { menu: 'Home', title: '服务到期监控', url: 'https://sak.wwr.qzz.io', logo_url: 'https://nav.hxjx.hidns.co/icon/jk.svg', desc: '服务器到期监控提醒'  },
             { menu: 'Home', title: '域名到期管理', url: 'https://dak.wwr.qzz.io', logo_url: 'https://nav.hxjx.hidns.co/icon/jk.svg', desc: '域名到期管理提醒'  },
-            { menu: 'Home', title: 'blog-hexo', url: 'https://blog.hxjx.hidns.co', logo_url: 'https://nav.hxjx.hidns.co/icon/icon/hexo.svg', desc: 'hexo博客'  },
+            { menu: 'Home', title: 'blog-hexo', url: 'https://blog.hxjx.hidns.co', logo_url: 'https://nav.hxjx.hidns.co/icon/hexo.svg', desc: 'hexo博客'  },
             { menu: 'Home', title: 'blog-typecho', url: 'https://to.363689.xyz', logo_url: 'https://nav.hxjx.hidns.co/icon/blog.svg', desc: 'typecho博客'  },
             { menu: 'Home', title: 'blog-typecho', url: 'https://blog.hxjx.hidns.vip', logo_url: 'https://nav.hxjx.hidns.co/icon/blog.svg', desc: 'typecho博客'  },
             { menu: 'Home', title: 'blog-next', url: 'https://blog.363689.xyz', logo_url: 'https://nav.hxjx.hidns.co/icon/next.png', desc: 'next博客'  },
@@ -337,5 +337,6 @@ db.serialize(() => {
 
 
 module.exports = db; 
+
 
 
