@@ -32,7 +32,7 @@
     </div>
 
     <button @click="cycleTheme()" class="theme-toggle-button" title="切换显示模式">
-      <span v-if="theme === 'light'">☀️</span>     <span v-if="theme === 'dark-milky'">🌙</span> <span v-if="theme === 'dark-smoky'">🌑</span> </button>
+      <span v-if="theme === 'light'">☼</span>     <span v-if="theme === 'dark-milky'">◐</span> <span v-if="theme === 'dark-smoky'">☽</span> </button>
   </nav>
 </template>
 
@@ -178,7 +178,6 @@ function hideSubMenu(menuId) {
   display: none;
 }
 
-/* *** 这是我唯一的修改 *** */
 .theme-toggle-button {
   background-color: var(--card-bg);
   border: 1px solid var(--card-border);
@@ -193,10 +192,6 @@ function hideSubMenu(menuId) {
   justify-content: center;
   margin-left: 1rem;
   padding: 0;
-  
-  /* *** 把这一行加进去 *** 它会强制把彩色的 Emoji 变成灰度 (黑白)
-  */
-  filter: grayscale(100%);
 }
 .theme-toggle-button:hover {
   background-color: var(--card-bg);
