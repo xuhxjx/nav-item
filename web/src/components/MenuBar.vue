@@ -276,6 +276,8 @@ function hideSubMenu(menuId) {
   .theme-icon {
     width: 20px;
     height: 20px;
+    color: var(--text-color); /* <-- 把这一行加进去 */
   }
 }
 </style>
+
