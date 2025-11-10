@@ -333,7 +333,10 @@ function handleLogoError(event) {
 
 .home-container {
   min-height: 95vh;
-  background-image: url('/background.webp');
+  
+  /* 1. 默认 (手机) 加载手机壁纸 */
+  background-image: url('/background-mobile.webp'); 
+  
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -342,6 +345,16 @@ function handleLogoError(event) {
   flex-direction: column;
   position: relative;
   padding-top: 50px; 
+}
+
+/* 2. 添加这个新的 @media 规则 (放在 .home-container 后面) */
+@media (min-width: 768px) {
+  /* 当屏幕宽度大于 768px (即平板或电脑)
+    我们就切换到电脑壁纸 
+  */
+  .home-container {
+    background-image: url('/background-desktop.webp');
+  }
 }
 
 /* *** 这是最关键的修改 *** */
@@ -623,4 +636,5 @@ function handleLogoError(event) {
   }
 }
 </style>
+
 
