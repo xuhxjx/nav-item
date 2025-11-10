@@ -233,8 +233,8 @@ function hideSubMenu(menuId) {
 .theme-icon {
   width: 24px;   
   height: 24px;
-  fill: var(--text-color); 
-  pointer-events: none; /* 让点击穿透图标, 点击到按钮上 */
+  fill: var(--text-color); /* 强制使用 CSS 变量填充颜色 */
+  pointer-events: none;    /* 让点击穿透图标, 点击到按钮上 */
 }
 
 /* *** 我把所有错误的 CSS 切换逻辑都删除了 *** */
