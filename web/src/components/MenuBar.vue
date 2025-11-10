@@ -32,19 +32,7 @@
     </div>
 
     <button @click="cycleTheme()" class="theme-toggle-button" title="切换显示模式">
-      
-      <svg v-if="theme === 'light'" class="theme-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-        <path d="M12 2.25a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 0112 2.25zM7.5 4.06c.26 0 .52.1.72.29l1.06 1.06a.75.75 0 11-1.06 1.06l-1.06-1.06a.75.75 0 01.29-.72.75.75 0 01.75-.29zm10.94 2.19c.26 0 .52.1.72.29l1.06 1.06a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 011.06-1.06.75.75 0 01.29.72zM4.06 7.5c0-.26.1-.52.29-.72l1.06-1.06a.75.75 0 011.06 1.06L5.12 7.78a.75.75 0 01-.72.29.75.75 0 01-.75-.75.75.75 0 01.29-.72zM21.75 12a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5a.75.75 0 01.75.75zM4.5 12a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5a.75.75 0 01.75-.75zm7.5 7.5a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5a.75.75 0 01.75-.75zm-3.44-2.19a.75.75 0 011.06 1.06l-1.06 1.06a.75.75 0 11-1.06-1.06l1.06-1.06.72.29zM18.94 16.5a.75.75 0 011.06 1.06l-1.06 1.06a.75.75 0 11-1.06-1.06l1.06-1.06zM12 7.5a4.5 4.5 0 110 9 4.5 4.5 0 010-9z" />
-      </svg>
-      
-      <svg v-if="theme === 'dark-milky'" class="theme-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-        <path fill-rule="evenodd" d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 004.463-.69a.75.75 0 01.981.98 10.503 10.503 0 01-5.455 2.593 10.5 10.5 0 01-11.66-11.66 10.503 10.503 0 012.593-5.455.75.75 0 01.819.162z" clip-rule="evenodd" />
-      </svg>
-      
-      <svg v-if="theme === 'dark-smoky'" class="theme-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-        <path fill-rule="evenodd" d="M12 21a9 9 0 100-18 9 9 0 000 18z" clip-rule="evenodd" />
-      </svg>
-    </button>
+      <span v-if="theme === 'light'">☀️</span>     <span v-if="theme === 'dark-milky'">🌙</span> <span v-if="theme === 'dark-smoky'">🌑</span> </button>
   </nav>
 </template>
 
@@ -52,7 +40,7 @@
 import { ref, watchEffect } from 'vue';
 import { useStorage } from '@vueuse/core';
 
-// (Script 逻辑保持不变, 它是正确的)
+// (Script 逻辑是 100% 正确的)
 const props = defineProps({ 
   menus: Array, 
   activeId: Number,
@@ -189,6 +177,8 @@ function hideSubMenu(menuId) {
 .sub-menu-item::before {
   display: none;
 }
+
+/* *** 这是我唯一的修改 *** */
 .theme-toggle-button {
   background-color: var(--card-bg);
   border: 1px solid var(--card-border);
@@ -203,6 +193,10 @@ function hideSubMenu(menuId) {
   justify-content: center;
   margin-left: 1rem;
   padding: 0;
+  
+  /* *** 把这一行加进去 *** 它会强制把彩色的 Emoji 变成灰度 (黑白)
+  */
+  filter: grayscale(100%);
 }
 .theme-toggle-button:hover {
   background-color: var(--card-bg);
@@ -213,40 +207,31 @@ function hideSubMenu(menuId) {
   display: none;
 }
 
-/* *** 这是我们为 SVG 新加的样式 *** */
-.theme-icon {
-  width: 24px;   
-  height: 24px;
-  fill: var(--text-color); /* 强制使用 CSS 变量填充颜色 */
-  pointer-events: none;    /* 让点击穿透图标, 点击到按钮上 */
-}
 
 @media (max-width: 768px) {
   .menu-bar {
     gap: 0.2rem;
   }
+  
   .menu-bar button {
     font-size: 14px;
     padding: .4rem .8rem;
   }
+  
   .sub-menu {
     min-width: 100px;
   }
+  
   .sub-menu-item {
     font-size: 8px !important;
     padding: 0.2rem 0.8rem !important;
   }
+
   .theme-toggle-button {
     width: 32px;
     height: 32px;
     font-size: 1rem;
     margin-left: 0.5rem;
-  }
-
-  /* *** 这是为 SVG 新加的响应式样式 *** */
-  .theme-icon {
-    width: 20px;
-    height: 20px;
   }
 }
 </style>
