@@ -90,7 +90,6 @@ function hideSubMenu(menuId) {
 </script>
 
 <style scoped>
-/* (所有旧的菜单样式保持不变) */
 .menu-bar {
   display: flex;
   justify-content: center;
@@ -188,8 +187,6 @@ function hideSubMenu(menuId) {
 .sub-menu-item::before {
   display: none;
 }
-
-/* 这是按钮的样式 (正确的) */
 .theme-toggle-button {
   background-color: var(--card-bg);
   border: 1px solid var(--card-border);
@@ -213,17 +210,14 @@ function hideSubMenu(menuId) {
 .theme-toggle-button::before {
   display: none;
 }
-
-/* 这是 SVG 图标的“基础”样式 */
 .theme-icon {
   width: 24px;   
   height: 24px;
   fill: var(--text-color); 
-  pointer-events: none; /* 确保点击穿透图标 */
+  pointer-events: none;
 }
 
 @media (max-width: 768px) {
-  /* (响应式样式保持不变) */
   .menu-bar {
     gap: 0.2rem;
   }
@@ -244,7 +238,6 @@ function hideSubMenu(menuId) {
     font-size: 1rem;
     margin-left: 0.5rem;
   }
-
   .theme-icon {
     width: 20px;
     height: 20px;
@@ -253,29 +246,28 @@ function hideSubMenu(menuId) {
 </style>
 
 <style>
-/* 默认状态 (浅色模式): 隐藏2和3, 显示1 */
-.theme-icon.icon-milky,
-.theme-icon.icon-smoky {
+/* 1. 默认: 隐藏所有图标 */
+.theme-icon {
   display: none;
 }
-.theme-icon.icon-light {
+
+/* 2. 浅色模式 (.icon-light):
+      当 <html> 没有任何 class 时 (默认), 显示 .icon-light
+*/
+html:not(.dark-milky):not(.dark-smoky) .theme-icon.icon-light {
   display: block;
 }
 
-/* 模式二 (深色-乳白): 隐藏1和3, 显示2 */
-html.dark-milky .theme-icon.icon-light,
-html.dark-milky .theme-icon.icon-smoky {
-  display: none;
-}
+/* 3. 深色-乳白 (.icon-milky):
+      当 <html> 有 .dark-milky class 时, 显示 .icon-milky
+*/
 html.dark-milky .theme-icon.icon-milky {
   display: block;
 }
 
-/* 模式三 (深色-墨黑): 隐藏1和2, 显示3 */
-html.dark-smoky .theme-icon.icon-light,
-html.dark-smoky .theme-icon.icon-milky {
-  display: none;
-}
+/* 4. 深色-墨黑 (.icon-smoky):
+      当 <html> 有 .dark-smoky class 时, 显示 .icon-smoky
+*/
 html.dark-smoky .theme-icon.icon-smoky {
   display: block;
 }
