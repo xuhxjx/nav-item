@@ -150,7 +150,7 @@ db.serialize(() => {
           // 插入卡片（包括主菜单卡片和子菜单卡片）
           const cards = [
             // Home
-            { menu: 'Home', title: 'Nav', url: 'https://nav.hxjx.hidns.co/', logo_url: '', desc: '个人导航站'  },
+            { menu: 'Home', title: 'Nav', url: 'https://nav.hxjx.hidns.co/', logo_url: 'https://nav.hxjx.hidns.co/logo.svg', desc: '个人导航站'  },
             { menu: 'Home', title: 'Youtube', url: 'https://www.youtube.com', logo_url: 'https://img.icons8.com/ios-filled/100/ff1d06/youtube-play.png', desc: '全球最大的视频社区'  },
             { menu: 'Home', title: 'google cloud', url: 'https://cloud.google.com/?hl=zh-cn', logo_url: '', desc: ''  },
             { menu: 'Home', title: 'GitHub', url: 'https://github.com', logo_url: '', desc: '全球最大的代码托管平台'  },
@@ -337,6 +337,7 @@ db.serialize(() => {
 
 
 module.exports = db; 
+
 
 
 
