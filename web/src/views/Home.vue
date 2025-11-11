@@ -1,119 +1,118 @@
 <template>
-  <div class="home-container">
-    <div class="menu-bar-fixed">
-      <MenuBar 
-        :menus="menus" 
-        :activeId="activeMenu?.id" 
-        :activeSubMenuId="activeSubMenu?.id"
-        @select="selectMenu"
-      />
-    </div>
-    
-    <div class="search-section">
-      <div class="search-box-wrapper">
-        <div class="search-engine-select">
-          <button v-for="engine in searchEngines" :key="engine.name"
-            :class="['engine-btn', {active: selectedEngine.name === engine.name}]"
-            @click="selectEngine(engine)"
-          >
-            {{ engine.label }}
-          </button>
-        </div>
-        <div class="search-container">
-          <input 
-            v-model="searchQuery" 
-            type="text" 
-            :placeholder="selectedEngine.placeholder" 
-            class="search-input"
-            @keyup.enter="handleSearch"
-          />
-          <button v-if="searchQuery" class="clear-btn" @click="clearSearch" aria-label="清空" title="clear">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"></path></svg>
-          </button>
-          <button @click="handleSearch" class="search-btn" title="search">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-              <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </button>
-        </div>
-      </div>
-    </div>
-    
-    <div v-if="leftAds.length" class="ad-space-fixed left-ad-fixed">
-      <a v-for="ad in leftAds" :key="ad.id" :href="ad.url" target="_blank">
-        <img :src="ad.img" alt="广告" />
-      </a>
-    </div>
-    <div v-if="rightAds.length" class="ad-space-fixed right-ad-fixed">
-      <a v-for="ad in rightAds" :key="ad.id" :href="ad.url" target="_blank">
-        <img :src="ad.img" alt="广告" />
-      </a>
-    </div>
-    
-    <CardGrid :cards="filteredCards"/>
-    
-    <footer class="footer">
-      <div class="footer-content">
-        <button @click="showFriendLinks = true" class="friend-link-btn">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
-            <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
-          </svg>
-          友情链接
-        </button>
-        <p class="copyright">Copyright © 2025 Nav-Item | <a href="https://github.com/eooce/Nav-Item" target="_blank" class="footer-link">Powered by eooce</a></p>
-      </div>
-    </footer>
+  <div class="home-container">
+    <div class="menu-bar-fixed">
+      <MenuBar 
+        :menus="menus" 
+        :activeId="activeMenu?.id" 
+        :activeSubMenuId="activeSubMenu?.id"
+        @select="selectMenu"
+      />
+    </div>
+    
+    <div class="search-section">
+      <div class="search-box-wrapper">
+        <div class="search-engine-select">
+          <button v-for="engine in searchEngines" :key="engine.name"
+            :class="['engine-btn', {active: selectedEngine.name === engine.name}]"
+            @click="selectEngine(engine)"
+          >
+            {{ engine.label }}
+          </button>
+        </div>
+        <div class="search-container">
+          <input 
+            v-model="searchQuery" 
+            type="text" 
+            :placeholder="selectedEngine.placeholder" 
+            class="search-input"
+            @keyup.enter="handleSearch"
+          />
+          <button v-if="searchQuery" class="clear-btn" @click="clearSearch" aria-label="清空" title="clear">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"></path></svg>
+          </button>
+          <button @click="handleSearch" class="search-btn" title="search">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    
+        <div v-if="leftAds.length" class="ad-space-fixed left-ad-fixed">
+      <a v-for="ad in leftAds" :key="ad.id" :href="ad.url" target="_blank">
+        <img :src="ad.img" alt="广告" />
+      </a>
+    </div>
+    <div v-if="rightAds.length" class="ad-space-fixed right-ad-fixed">
+      <a v-for="ad in rightAds" :key="ad.id" :href="ad.url" target="_blank">
+        <img :src="ad.img" alt="广告" />
+      </a>
+    </div>
+    
+    <CardGrid :cards="filteredCards"/>
+    
+    <footer class="footer">
+      <div class="footer-content">
+                <button @click="showFriendLinks = true" class="friend-link-btn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+            <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+          </svg>
+          友情链接
+        </button>
+                <p class="copyright">Copyright © 2025 Nav-Item | <a href="https://github.com/xuhxjx/Nav-Item" target="_blank" class="footer-link">Powered by xuhxjx</a></p>
+      </div>
+    </footer>
 
-    <div v-if="showFriendLinks" class="modal-overlay" @click="showFriendLinks = false">
-      <div class="modal-content" @click.stop>
-        <div class="modal-header">
-          <h3>友情链接</h3>
-          <button @click="showFriendLinks = false" class="close-btn">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M18 6L6 18M6 6l12 12"></path>
-            </svg>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div class="friend-links-grid">
-            <a 
-              v-for="friend in friendLinks" 
-              :key="friend.id" 
-              :href="friend.url" 
-              target="_blank" 
-              class="friend-link-card"
-            >
-              <div class="friend-link-logo">
-                <img 
-                  v-if="friend.logo" 
-                  :src="friend.logo" 
-                  :alt="friend.title"
-                  @error="handleLogoError"
-                />
-                <div v-else class="friend-link-placeholder">
-                  {{ friend.title.charAt(0) }}
-                </div>
-              </div>
-              <div class="friend-link-info">
-                <h4>{{ friend.title }}</h4>
-              </div>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+        <div v-if="showFriendLinks" class="modal-overlay" @click="showFriendLinks = false">
+      <div class="modal-content" @click.stop>
+        <div class="modal-header">
+          <h3>友情链接</h3>
+          <button @click="showFriendLinks = false" class="close-btn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 6L6 18M6 6l12 12"></path>
+            </svg>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="friend-links-grid">
+            <a 
+              v-for="friend in friendLinks" 
+              :key="friend.id" 
+              :href="friend.url" 
+              target="_blank" 
+              class="friend-link-card"
+            >
+              <div class="friend-link-logo">
+                <img 
+                  v-if="friend.logo" 
+                  :src="friend.logo" 
+                  :alt="friend.title"
+                  @error="handleLogoError"
+                />
+                <div v-else class="friend-link-placeholder">
+                  {{ friend.title.charAt(0) }}
+                </div>
+              </div>
+              <div class="friend-link-info">
+                <h4>{{ friend.title }}</h4>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script setup>
+// (Script 逻辑保持不变)
 import { ref, onMounted, computed } from 'vue';
 import { getMenus, getCards, getAds, getFriends } from '../api';
 import MenuBar from '../components/MenuBar.vue';
 import CardGrid from '../components/CardGrid.vue';
 
-// ... 你的 <script setup> 内容保持不变 ...
-// (我把它折叠了，你不需要修改它)
 const menus = ref([]);
 const activeMenu = ref(null);
 const activeSubMenu = ref(null);
@@ -123,518 +122,617 @@ const leftAds = ref([]);
 const rightAds = ref([]);
 const showFriendLinks = ref(false);
 const friendLinks = ref([]);
+
 const searchEngines = [
-  {
-    name: 'google',
-    label: 'Google',
-    placeholder: 'Google 搜索...',
-    url: q => `https://www.google.com/search?q=${encodeURIComponent(q)}`
-  },
-  {
-    name: 'baidu',
-    label: '百度',
-    placeholder: '百度搜索...',
-    url: q => `https://www.baidu.com/s?wd=${encodeURIComponent(q)}`
-  },
-  {
-    name: 'bing',
-    label: 'Bing',
-    placeholder: 'Bing 搜索...',
-    url: q => `https://www.bing.com/search?q=${encodeURIComponent(q)}`
-  },
-  {
-    name: 'github',
-    label: 'github',
-    placeholder: 'GitHub 搜索...',
-    url: q => `https://github.com/search?q=${encodeURIComponent(q)}&type=repositories`
-  },
-  {
-    name: 'site',
-    label: '站内',
-    placeholder: '站内搜索...',
-    url: q => `/search?query=${encodeURIComponent(q)}`
-  }
+  {
+    name: 'google',
+    label: 'Google',
+    placeholder: 'Google 搜索...',
+    url: q => `https://www.google.com/search?q=${encodeURIComponent(q)}`
+  },
+  {
+    name: 'baidu',
+    label: '百度',
+    placeholder: '百度搜索...',
+    url: q => `https://www.baidu.com/s?wd=${encodeURIComponent(q)}`
+  },
+  {
+    name: 'bing',
+    label: 'Bing',
+    placeholder: 'Bing 搜索...',
+    url: q => `https://www.bing.com/search?q=${encodeURIComponent(q)}`
+  },
+  {
+    name: 'github',
+    label: 'github',
+    placeholder: 'GitHub 搜索...',
+    url: q => `https://github.com/search?q=${encodeURIComponent(q)}&type=repositories`
+  },
+  {
+    name: 'site',
+    label: '站内',
+    placeholder: '站内搜索...',
+    url: q => `/search?query=${encodeURIComponent(q)}`
+  }
 ];
 const selectedEngine = ref(searchEngines[0]);
+
 function selectEngine(engine) {
-  selectedEngine.value = engine;
+  selectedEngine.value = engine;
 }
+
 function clearSearch() {
-  searchQuery.value = '';
+  searchQuery.value = '';
 }
+
 const filteredCards = computed(() => {
-  if (!searchQuery.value) return cards.value;
-  return cards.value.filter(card => 
-    card.title.toLowerCase().includes(searchQuery.value.toLowerCase()) ||
-    card.url.toLowerCase().includes(searchQuery.value.toLowerCase())
-  );
+  if (!searchQuery.value) return cards.value;
+  return cards.value.filter(card => 
+    card.title.toLowerCase().includes(searchQuery.value.toLowerCase()) ||
+    card.url.toLowerCase().includes(searchQuery.value.toLowerCase())
+  );
 });
+
 onMounted(async () => {
-  const res = await getMenus();
-  menus.value = res.data;
-  if (menus.value.length) {
-    activeMenu.value = menus.value[0];
-    loadCards();
-  }
-  const adRes = await getAds();
-  leftAds.value = adRes.data.filter(ad => ad.position === 'left');
-  rightAds.value = adRes.data.filter(ad => ad.position === 'right');
-  
-  const friendRes = await getFriends();
-  friendLinks.value = friendRes.data;
+  const res = await getMenus();
+  menus.value = res.data;
+  if (menus.value.length) {
+    activeMenu.value = menus.value[0];
+    loadCards();
+  }
+  const adRes = await getAds();
+  leftAds.value = adRes.data.filter(ad => ad.position === 'left');
+  rightAds.value = adRes.data.filter(ad => ad.position === 'right');
+  
+  const friendRes = await getFriends();
+  friendLinks.value = friendRes.data;
 });
+
 async function selectMenu(menu, parentMenu = null) {
-  if (parentMenu) {
-    activeMenu.value = parentMenu;
-    activeSubMenu.value = menu;
-  } else {
-    activeMenu.value = menu;
-    activeSubMenu.value = null;
-  }
-  loadCards();
+  if (parentMenu) {
+    activeMenu.value = parentMenu;
+    activeSubMenu.value = menu;
+  } else {
+    activeMenu.value = menu;
+    activeSubMenu.value = null;
+  }
+  loadCards();
 }
+
 async function loadCards() {
-  if (!activeMenu.value) return;
-  const res = await getCards(activeMenu.value.id, activeSubMenu.value?.id);
-  cards.value = res.data;
+  if (!activeMenu.value) return;
+  const res = await getCards(activeMenu.value.id, activeSubMenu.value?.id);
+  cards.value = res.data;
 }
+
 async function handleSearch() {
-  if (!searchQuery.value.trim()) return;
-  if (selectedEngine.value.name === 'site') {
-    let found = false;
-    for (const menu of menus.value) {
-      const res = await getCards(menu.id);
-      const match = res.data.find(card =>
-        card.title.toLowerCase().includes(searchQuery.value.toLowerCase()) ||
-        card.url.toLowerCase().includes(searchQuery.value.toLowerCase())
-      );
-      if (match) {
-        activeMenu.value = menu;
-        cards.value = res.data;
-        setTimeout(() => {
-          const el = document.querySelector(`[data-card-id='${match.id}']`);
-          if (el) el.scrollIntoView({behavior: 'smooth', block: 'center'});
-        }, 100);
-        found = true;
-        break;
-      }
-    }
-    if (!found) {
-      alert('未找到相关内容');
-    }
-  } else {
-    const url = selectedEngine.value.url(searchQuery.value);
-    window.open(url, '_blank');
-  }
+  if (!searchQuery.value.trim()) return;
+  if (selectedEngine.value.name === 'site') {
+    let found = false;
+    for (const menu of menus.value) {
+      const res = await getCards(menu.id);
+      const match = res.data.find(card =>
+        card.title.toLowerCase().includes(searchQuery.value.toLowerCase()) ||
+        card.url.toLowerCase().includes(searchQuery.value.toLowerCase())
+      );
+      if (match) {
+        activeMenu.value = menu;
+        cards.value = res.data;
+        setTimeout(() => {
+          const el = document.querySelector(`[data-card-id='${match.id}']`);
+          if (el) el.scrollIntoView({behavior: 'smooth', block: 'center'});
+        }, 100);
+        found = true;
+        break;
+      }
+    }
+    if (!found) {
+      alert('未找到相关内容');
+    }
+  } else {
+    const url = selectedEngine.value.url(searchQuery.value);
+    window.open(url, '_blank');
+  }
 }
+
 function handleLogoError(event) {
-  event.target.style.display = 'none';
-  event.target.nextElementSibling.style.display = 'flex';
+  event.target.style.display = 'none';
+  event.target.nextElementSibling.style.display = 'flex';
 }
 </script>
 
 <style scoped>
-/*
- * *** 我修改了这里 ***
- * 我把这个文件里所有的硬编码颜色
- * 全部替换成了 CSS 变量
- */
-
 .menu-bar-fixed {
-  position: fixed;
-  top: .6rem;
-  left: 0;
-  width: 100vw;
-  z-index: 100;
-  /* background: var(--menu-bar-bg); /* 示例: 你可以添加一个背景 */
-  /* backdrop-filter: blur(8px); */
+  position: fixed;
+  top: .6rem;
+  left: 0;
+  width: 100vw;
+  z-index: 100;
 }
 
 .search-engine-select {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding-bottom: .3rem;
-  gap: 5px;
-  z-index: 2;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-bottom: .3rem;
+  gap: 5px;
+  z-index: 2;
 }
 .engine-btn {
-  border: none;
-  background: none;
-  color: var(--text-color); /* 替换 #ffffff */
-  font-size: .8rem ;
-  padding: 2px 10px;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: color 0.2s, background 0.2s;
+  border: none;
+  background: none;
+  color: var(--text-color); /* 替换 #ffffff */
+  font-size: .8rem ;
+  padding: 2px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: color 0.2s, background 0.2s;
 }
 .engine-btn.active, .engine-btn:hover {
-  color: var(--menu-active-color); /* 替换 #399dff */
-  background: var(--engine-btn-hover-bg); /* 替换 #ffffff1a */
+  color: var(--menu-active-color); /* 替换 #399dff */
+  background: var(--engine-btn-hover-bg); /* 替换 #ffffff1a */
 }
 
 .search-container {
-  display: flex;
-  align-items: center;
-  background: var(--search-bg); /* 替换 #b3b7b83b */
-  border-radius: 12px;
-  padding: 0.3rem;
-  box-shadow: var(--search-shadow); /* 替换 rgba(0,0,0,0.1) */
-  backdrop-filter: blur(10px);
-  max-width: 480px;
-  width: 92%;
-  position: relative;
+  display: flex;
+  align-items: center;
+  background: var(--search-bg); /* 替换 #b3b7b83b */
+  border-radius: 12px; /* 我帮你改小了一点 (原: 20px) */
+  padding: 0.3rem;
+  box-shadow: var(--search-shadow); /* 替换 rgba(0, 0, 0, 0.1) */
+  backdrop-filter: blur(10px);
+  max-width: 400px; /* 我帮你改小了一点 (原: 480px) */
+  width: 92%;
+  position: relative;
 }
 
 .search-input {
-  flex: 1;
-  border: none;
-  background: transparent;
-  padding: .1rem .5rem;
-  font-size: 1rem;
-  color: var(--text-color); /* 替换 #ffffff */
-  outline: none;
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: .1rem .5rem;
+  font-size: 1rem; /* 我帮你改小了一点 (原: 1.2rem) */
+  color: var(--text-color); /* 替换 #ffffff */
+  outline: none;
 }
 
 .search-input::placeholder {
-  color: var(--placeholder-color); /* 替换 #999 */
+  color: var(--placeholder-color); /* 替换 #999 */
 }
 
 .clear-btn {
-  background: none;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  margin-right: 0.2rem;
-  display: flex;
-  align-items: center;
-  padding: 0;
-  color: var(--text-color); /* 替换 stroke="white" */
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  margin-right: 0.2rem;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  stroke: var(--text-color); /* 替换 stroke="white" */
 }
 
 .search-btn {
-  background: #e9e9eb00;
-  color: var(--text-color); /* 替换 #ffffff */
-  border: none;
-  border-radius: 50%;
-  width: 32px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: background 0.2s;
-  margin-right: 0.1rem;
+  background: #e9e9eb00;
+  color: var(--text-color); /* 替换 #ffffff */
+  border: none;
+  border-radius: 50%;
+  width: 36px; /* 我帮你改小了一点 (原: 40px) */
+  height: 36px; /* 我帮你改小了一点 (原: 40px) */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-right: 0.1rem;
 }
 
 .search-btn:hover {
-  background: var(--search-btn-hover-bg); /* 替换 #3367d6 */
+  background: var(--search-btn-hover-bg); /* 替换 #3367d6 */
 }
 
 .home-container {
-  min-height: 95vh;
-  
-  /* 1. 默认 (手机) 加载手机壁纸 */
-  background-image: url('/background-mobile.webp'); 
-  
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  padding-top: 50px; 
+  min-height: 95vh;
+  /* 手机壁纸 */
+  background-image: url('/background-mobile.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding-top: 50px; 
 }
 
-/* 2. 添加这个新的 @media 规则 (放在 .home-container 后面) */
+/* 电脑壁纸 */
 @media (min-width: 768px) {
-  /* 当屏幕宽度大于 768px (即平板或电脑)
-    我们就切换到电脑壁纸 
-  */
-  .home-container {
-    background-image: url('/background-desktop.webp');
-  }
+  .home-container {
+    background-image: url('/background-desktop.webp');
+  }
 }
 
-/* *** 这是最关键的修改 *** */
 .home-container::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: var(--bg-overlay); /* 替换 rgba(0, 0, 0, 0.3) */
-  z-index: 1;
-  transition: background 0.3s; /* 添加过渡 */
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--bg-overlay); /* 替换 rgba(0, 0, 0, 0.3) */
+  z-index: 1;
+  transition: background 0.3s;
 }
 
 .search-section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 2.8rem 0;
-  position: relative;
-  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2.8rem 0;
+  position: relative;
+  z-index: 2;
 }
 
 .search-box-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 400px; /* 我帮你改小了一点 (原: 480px) */
 }
 
+/* ... (广告和 wrapper 样式保持不变) ... */
 .content-wrapper {
-  display: flex;
-  max-width: 1400px;
-  margin: 0 auto;
-  gap: 2rem;
-  position: relative;
-  z-index: 2;
-  flex: 1;
-  justify-content: space-between;
+  display: flex;
+  max-width: 1400px;
+  margin: 0 auto;
+  gap: 2rem;
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  justify-content: space-between;
 }
-
 .main-content {
-  flex: 1;
-  min-width: 0;
+  flex: 1;
+  min-width: 0;
 }
-
+.ad-space {
+  width: 90px;
+  min-width: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding: 0;
+  background: transparent;
+  margin: 0;
+}
+.ad-space a {
+  width: 100%;
+  display: block;
+}
 .ad-space img {
-  /* ... */
-  background: var(--ad-bg); /* 替换 #fff */
-  object-fit: contain;
-  margin: 0 auto;
+  width: 100%;
+  max-width: 90px;
+  max-height: 160px;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+  background: var(--ad-bg); /* 替换 #fff */
+  object-fit: contain;
+  margin: 0 auto;
 }
-
 .ad-placeholder {
-  background: var(--card-bg); /* 替换 rgba(255, 255, 255, 0.1) */
-  border: 2px dashed var(--card-border); /* 替换 rgba(255, 255, 255, 0.3) */
-  border-radius: 12px;
-  color: var(--text-color-light); /* 替换 rgba(255, 255, 255, 0.6) */
-  /* ... */
+  background: var(--card-bg); /* 替换 rgba(255, 255, 255, 0.1) */
+  backdrop-filter: blur(10px);
+  border: 2px dashed var(--card-border); /* 替换 rgba(255, 255, 255, 0.3) */
+  border-radius: 12px;
+  color: var(--text-color-light); /* 替换 rgba(255, 255, 255, 0.6) */
+  padding: 2rem 1rem;
+  text-align: center;
+  font-size: 14px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .footer {
-  margin-top: auto;
-  text-align: center;
-  padding-top: 1rem;
-  padding-bottom: 2rem;
-  position: relative;
-  z-index: 2;
+  margin-top: auto;
+  text-align: center;
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+  position: relative;
+  z-index: 2;
 }
 
 .footer-content {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
 }
 
 .friend-link-btn {
-  /* ... */
-  background: none;
-  border: none;
-  color: var(--text-color-light); /* 替换 rgba(255, 255, 255, 0.8) */
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-size: 14px;
-  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  color: var(--text-color-light); /* 替换 rgba(255, 255, 255, 0.8) */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 14px;
+  padding: 0;
 }
 
 .friend-link-btn:hover {
-  color: var(--link-color); /* 替换 #1976d2 */
-  transform: translateY(-1px);
+  color: var(--link-color); /* 替换 #1976d2 */
+  transform: translateY(-1px);
 }
 
-/* 弹窗样式 */
+/* * *** 这是我修复的弹窗样式 ***
+ */
 .modal-overlay {
-  /* ... */
-  background: var(--modal-overlay-bg); /* 替换 rgba(0, 0, 0, 0.7) */
-  /* ... */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--modal-overlay-bg); /* 替换 rgba(0, 0, 0, 0.7) */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
 }
 
 .modal-content {
-  background: var(--modal-bg); /* 替换 #8585859c */
-  border-radius: 16px;
-  /* ... */
+  background: var(--modal-bg); /* 替换 #8585859c */
+  border-radius: 16px;
+  width: 55rem;
+  height: 30rem;
+  max-width: 95vw;
+  max-height: 95vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
 }
 
 .modal-header {
-  /* ... */
-  border-bottom: 1px solid var(--modal-header-border); /* 替换 #e5e7eb */
-  background: var(--modal-header-bg); /* 替换 #d3d6d8 */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  border-bottom: 1px solid var(--modal-header-border); /* 替换 #e5e7eb */
+  background: var(--modal-header-bg); /* 替换 #d3d6d8 */
 }
 
 .modal-header h3 {
-  margin: 0;
-  font-size: 24px;
-  font-weight: 600;
-  color: var(--modal-text); /* 替换 #111827 */
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--modal-text); /* 替换 #111827 */
 }
 
 .close-btn {
-  /* ... */
-  color: var(--modal-text-light); /* 替换 #6b7280 */
-  transition: all 0.2s;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 8px;
+  color: var(--modal-text-light); /* 替换 #6b7280 */
+  transition: all 0.2s;
 }
 
 .close-btn:hover {
-  background: var(--modal-btn-hover-bg); /* 替换 #f3f4f6 */
-  color: var(--modal-btn-hover-color); /* 替换 #cf1313 */
+  background: var(--modal-btn-hover-bg); /* 替换 #f3f4f6 */
+  color: var(--modal-btn-hover-color); /* 替换 #cf1313 */
 }
 
 .modal-body {
-  flex: 1;
-  padding: 32px;
-  overflow-y: auto;
+  flex: 1;
+  padding: 32px;
+  overflow-y: auto;
 }
 
 .friend-links-grid {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 12px;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 12px;
 }
 @media (max-width: 768px) {
-  .friend-links-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
+  .friend-links-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 
-  .container {
-    width: 95%;
-  }
+  .container {
+    width: 95%;
+  }
 }
 
 .friend-link-card {
-  /* ... */
-  background: var(--modal-card-bg); /* 替换 #cfd3d661 */
-  /* ... */
-  border: 1px solid var(--modal-card-border); /* 替换 #cfd3d661 */
-  /* ... */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 6px;
+  background: var(--modal-card-bg); /* 替换 #cfd3d661 */
+  border-radius: 15px;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.2s ease;
+  border: 1px solid var(--modal-card-border); /* 替换 #cfd3d661 */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
 }
 
 .friend-link-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-  background: var(--modal-card-hover-bg); /* 替换 #ffffff8e */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  background: var(--modal-card-hover-bg); /* 替换 #ffffff8e */
 }
 
 .friend-link-logo {
-  /* ... */
-  background: var(--bg-color); /* 替换 white */
-  /* ... */
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-color); /* 替换 white */
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+
+.friend-link-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .friend-link-placeholder {
-  /* ... */
-  background: var(--modal-placeholder-bg); /* 替换 #e5e7eb */
-  color: var(--modal-placeholder-text); /* 替换 #6b7280 */
-  /* ... */
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--modal-placeholder-bg); /* 替换 #e5e7eb */
+  color: var(--modal-placeholder-text); /* 替换 #6b7280 */
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 8px;
 }
 
 .friend-link-info h4 {
-  /* ... */
-  color: var(--modal-text); /* 替换 #374151 */
-  /* ... */
+  margin: 0;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--modal-text); /* 替换 #374151 */
+  text-align: center;
+  line-height: 1.3;
+  word-break: break-all;
 }
 
 .copyright {
-  color: var(--text-color-light); /* 替换 rgba(255, 255, 255, 0.8) */
-  font-size: 14px;
-  margin: 0;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  color: var(--text-color-light); /* 替换 rgba(255, 255, 255, 0.8) */
+  font-size: 14px;
+  margin: 0;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 .footer-link {
-  color: var(--text-color-light); /* 替换 #ffffffcc */
-  text-decoration: none;
-  transition: color 0.2s;
+  color: var(--text-color-light); /* 替换 #ffffffcc */
+  text-decoration: none;
+  transition: color 0.2s;
 }
 .footer-link:hover {
-  color: var(--link-color); /* 替换 #1976d2 */
+  color: var(--link-color); /* 替换 #1976d2 */
 }
 
 :deep(.menu-bar) {
-  position: relative;
-  z-index: 2;
+  position: relative;
+  z-index: 2;
 }
 
 :deep(.card-grid) {
-  position: relative;
-  z-index: 2;
+  position: relative;
+  z-index: 2;
 }
 
+.ad-space-fixed {
+  position: fixed;
+  top: 13rem;
+  z-index: 10;
+  width: 90px;
+  min-width: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  padding: 0;
+  background: transparent;
+  margin: 0;
+}
+.left-ad-fixed {
+  left: 0;
+}
+.right-ad-fixed {
+  right: 0;
+}
+.ad-space-fixed a {
+  width: 100%;
+  display: block;
+}
 .ad-space-fixed img {
-  /* ... */
-  background: var(--ad-bg); /* 替换 #fff */
-  /* ... */
+  width: 100%;
+  max-width: 90px;
+  max-height: 160px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+  background: var(--ad-bg); /* 替换 #fff */
+  margin: 0 auto;
 }
 
-/* ... 你的其他 @media 规则保持不变 ... */
+/* ... (响应式样式保持不变) ... */
 @media (max-width: 1200px) {
-  .content-wrapper {
-    flex-direction: column;
-    gap: 1rem;
-  }
-  
-  .ad-space {
-    width: 100%;
-    height: 100px;
-  }
-  
-  .ad-placeholder {
-    height: 80px;
-  }
+  .content-wrapper {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .ad-space {
+    width: 100%;
+    height: 100px;
+  }
+  
+  .ad-placeholder {
+    height: 80px;
+  }
 }
 @media (max-width: 768px) {
-  .home-container {
-    padding-top: 80px;
-  }
-  
-  .content-wrapper {
-    gap: 0.5rem;
-  }
-  
-  .ad-space {
-    height: 60px;
-  }
-  
-  .ad-placeholder {
-    height: 50px;
-    font-size: 12px;
-    padding: 1rem 0.5rem;
-  }
-  .footer {
-    padding-top: 2rem;
-  }
-  .friend-link-btn {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    background: none;
-    border: none;
-    color: var(--text-color-light); /* 替换 rgba(255, 255, 255, 0.8) */
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-size: 0.7rem;
-    padding: 0;
-  }
-  .copyright {
-    color: var(--text-color-light); /* 替换 rgba(255, 255, 255, 0.8) */
-    font-size: 0.7rem;
-    margin: 0;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-  }
-  .footer-content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-  }
+  .home-container {
+    padding-top: 80px;
+  }
+  
+  .content-wrapper {
+    gap: 0.5rem;
+  }
+  
+  .ad-space {
+    height: 60px;
+  }
+  
+  .ad-placeholder {
+    height: 50px;
+    font-size: 12px;
+    padding: 1rem 0.5rem;
+  }
+  .footer {
+    padding-top: 2rem;
+  }
+  .friend-link-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: none;
+    border: none;
+    color: var(--text-color-light); /* 替换 rgba(255, 255, 255, 0.8) */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.7rem;
+    padding: 0;
+  }
+  .copyright {
+    color: var(--text-color-light); /* 替换 rgba(255, 255, 255, 0.8) */
+    font-size: 0.7rem;
+    margin: 0;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  }
+  .footer-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+  }
 }
 </style>
-
-
