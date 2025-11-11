@@ -107,7 +107,6 @@
 </template>
 
 <script setup>
-// (Script 逻辑保持不变)
 import { ref, onMounted, computed } from 'vue';
 import { getMenus, getCards, getAds, getFriends } from '../api';
 import MenuBar from '../components/MenuBar.vue';
@@ -641,7 +640,7 @@ function handleLogoError(event) {
   z-index: 10;
   width: 90px;
   min-width: 60px;
-  display: flex;
+  display: flex;
   flex-direction: column;
   align-items: center;
   gap: 5px;
@@ -664,7 +663,7 @@ function handleLogoError(event) {
   max-width: 90px;
   max-height: 160px;
   box-shadow: 0 2px 12px rgba(0,0,0,0.12);
-  background: var(--ad-bg);
+  background: var(--ad-bg);
   margin: 0 auto;
 }
 
@@ -694,7 +693,7 @@ function handleLogoError(event) {
   
   .ad-space {
     height: 60px;
-SAP-1   }
+   }
   
   .ad-placeholder {
     height: 50px;
@@ -712,7 +711,7 @@ SAP-1   }
     border: none;
     color: var(--text-color-light);
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.3s ease;
     font-size: 0.7rem;
     padding: 0;
   }
