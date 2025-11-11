@@ -71,10 +71,10 @@
           <h3>友情链接</h3>
           <button @click="showFriendLinks = false" class="close-btn">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M18 6L6 18M6 6l12 12"></path>
+              <path d="M18 6L6 18M6 6l12 12" />
             </svg>
           </button>
-        </div>
+          </div>
         <div class="modal-body">
           <div class="friend-links-grid">
             <a 
@@ -712,3 +712,20 @@ function handleLogoError(event) {
     color: var(--text-color-light);
     cursor: pointer;
     transition: all 0.3s ease;
+    font-size: 0.7rem;
+    padding: 0;
+  }
+  .copyright {
+    color: var(--text-color-light);
+    font-size: 0.7rem;
+    margin: 0;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  }
+  .footer-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+  }
+}
+</style>
