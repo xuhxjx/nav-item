@@ -1,109 +1,109 @@
 <template>
-  <div class="home-container">
-    <div class="menu-bar-fixed">
-      <MenuBar 
-        :menus="menus" 
-        :activeId="activeMenu?.id" 
-        :activeSubMenuId="activeSubMenu?.id"
-        @select="selectMenu"
-      />
-    </div>
-    
-    <div class="search-section">
-      <div class="search-box-wrapper">
-        <div class="search-engine-select">
-          <button v-for="engine in searchEngines" :key="engine.name"
-            :class="['engine-btn', {active: selectedEngine.name === engine.name}]"
-            @click="selectEngine(engine)"
-          >
-            {{ engine.label }}
-          </button>
-        </div>
-        <div class="search-container">
-          <input 
-            v-model="searchQuery" 
-            type="text" 
-            :placeholder="selectedEngine.placeholder" 
-            class="search-input"
-            @keyup.enter="handleSearch"
-          />
-          <button v-if="searchQuery" class="clear-btn" @click="clearSearch" aria-label="清空" title="clear">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"></path></svg>
-          </button>
-          <button @click="handleSearch" class="search-btn" title="search">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-              <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </button>
-        </div>
-      </div>
-    </div>
-    
-        <div v-if="leftAds.length" class="ad-space-fixed left-ad-fixed">
-      <a v-for="ad in leftAds" :key="ad.id" :href="ad.url" target="_blank">
-        <img :src="ad.img" alt="广告" />
-      </a>
-    </div>
-    <div v-if="rightAds.length" class="ad-space-fixed right-ad-fixed">
-      <a v-for="ad in rightAds" :key="ad.id" :href="ad.url" target="_blank">
-        <img :src="ad.img" alt="广告" />
-      </a>
-    </div>
-    
-    <CardGrid :cards="filteredCards"/>
-    
-    <footer class="footer">
-      <div class="footer-content">
-        <button @click="showFriendLinks = true" class="friend-link-btn">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
-            <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
-          </svg>
-          友情链接
-        </button>
-        <p class="copyright">Copyright © 2025 Nav-Item | <a href="https://github.com/eooce/Nav-Item" target="_blank" class="footer-link">Powered by eooce</a></p>
-      </div>
-    </footer>
+  <div class="home-container">
+    <div class="menu-bar-fixed">
+      <MenuBar 
+        :menus="menus" 
+        :activeId="activeMenu?.id" 
+        :activeSubMenuId="activeSubMenu?.id"
+        @select="selectMenu"
+      />
+    </div>
+    
+    <div class="search-section">
+      <div class="search-box-wrapper">
+        <div class="search-engine-select">
+          <button v-for="engine in searchEngines" :key="engine.name"
+            :class="['engine-btn', {active: selectedEngine.name === engine.name}]"
+            @click="selectEngine(engine)"
+          >
+            {{ engine.label }}
+          </button>
+        </div>
+        <div class="search-container">
+          <input 
+            v-model="searchQuery" 
+            type="text" 
+            :placeholder="selectedEngine.placeholder" 
+            class="search-input"
+            @keyup.enter="handleSearch"
+          />
+          <button v-if="searchQuery" class="clear-btn" @click="clearSearch" aria-label="清空" title="clear">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"></path></svg>
+          </button>
+          <button @click="handleSearch" class="search-btn" title="search">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <div v-if="leftAds.length" class="ad-space-fixed left-ad-fixed">
+      <a v-for="ad in leftAds" :key="ad.id" :href="ad.url" target="_blank">
+        <img :src="ad.img" alt="广告" />
+      </a>
+    </div>
+    <div v-if="rightAds.length" class="ad-space-fixed right-ad-fixed">
+      <a v-for="ad in rightAds" :key="ad.id" :href="ad.url" target="_blank">
+        <img :src="ad.img" alt="广告" />
+      </a>
+    </div>
+    
+    <CardGrid :cards="filteredCards"/>
+    
+    <footer class="footer">
+      <div class="footer-content">
+        <button @click="showFriendLinks = true" class="friend-link-btn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+            <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+          </svg>
+          友情链接
+        </button>
+        <p class="copyright">Copyright © 2025 Nav-Item | <a href="https://github.com/eooce/Nav-Item" target="_blank" class="footer-link">Powered by eooce</a></p>
+      </div>
+    </footer>
 
-        <div v-if="showFriendLinks" class="modal-overlay" @click="showFriendLinks = false">
-      <div class="modal-content" @click.stop>
-        <div class="modal-header">
-          <h3>友情链接</h3>
-          <button @click="showFriendLinks = false" class="close-btn">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M18 6L6 18M6 6l12 12"></path>
-            </svg>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div class="friend-links-grid">
-            <a 
-              v-for="friend in friendLinks" 
-              :key="friend.id" 
-              :href="friend.url" 
-              target="_blank" 
-              class="friend-link-card"
-            >
-              <div class="friend-link-logo">
-                <img 
-                  v-if="friend.logo" 
-                  :src="friend.logo" 
-                  :alt="friend.title"
-                  @error="handleLogoError"
-                />
-                <div v-else class="friend-link-placeholder">
-                  {{ friend.title.charAt(0) }}
-                </div>
-              </div>
-              <div class="friend-link-info">
-                <h4>{{ friend.title }}</h4>
-              </div>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+    <div v-if="showFriendLinks" class="modal-overlay" @click="showFriendLinks = false">
+      <div class="modal-content" @click.stop>
+        <div class="modal-header">
+          <h3>友情链接</h3>
+          <button @click="showFriendLinks = false" class="close-btn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 6L6 18M6 6l12 12"></path>
+            </svg>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="friend-links-grid">
+            <a 
+              v-for="friend in friendLinks" 
+              :key="friend.id" 
+              :href="friend.url" 
+              target="_blank" 
+              class="friend-link-card"
+            >
+              <div class="friend-link-logo">
+                <img 
+                  v-if="friend.logo" 
+                  :src="friend.logo" 
+                  :alt="friend.title"
+                  @error="handleLogoError"
+                />
+                <div v-else class="friend-link-placeholder">
+                  {{ friend.title.charAt(0) }}
+                </div>
+              </div>
+              <div class="friend-link-info">
+                <h4>{{ friend.title }}</h4>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script setup>
@@ -112,6 +112,8 @@ import { getMenus, getCards, getAds, getFriends } from '../api';
 import MenuBar from '../components/MenuBar.vue';
 import CardGrid from '../components/CardGrid.vue';
 
+// ... 你的 <script setup> 内容保持不变 ...
+// (我把它折叠了，你不需要修改它)
 const menus = ref([]);
 const activeMenu = ref(null);
 const activeSubMenu = ref(null);
@@ -121,122 +123,113 @@ const leftAds = ref([]);
 const rightAds = ref([]);
 const showFriendLinks = ref(false);
 const friendLinks = ref([]);
-
 const searchEngines = [
-  {
-    name: 'google',
-    label: 'Google',
-    placeholder: 'Google 搜索...',
-    url: q => `https://www.google.com/search?q=${encodeURIComponent(q)}`
-  },
-  {
-    name: 'baidu',
-    label: '百度',
-    placeholder: '百度搜索...',
-    url: q => `https://www.baidu.com/s?wd=${encodeURIComponent(q)}`
-  },
-  {
-    name: 'bing',
-    label: 'Bing',
-    placeholder: 'Bing 搜索...',
-    url: q => `https://www.bing.com/search?q=${encodeURIComponent(q)}`
-  },
-  {
-    name: 'github',
-    label: 'github',
-    placeholder: 'GitHub 搜索...',
-    url: q => `https://github.com/search?q=${encodeURIComponent(q)}&type=repositories`
-  },
-  {
-    name: 'site',
-    label: '站内',
-    placeholder: '站内搜索...',
-    url: q => `/search?query=${encodeURIComponent(q)}`
-  }
+  {
+    name: 'google',
+    label: 'Google',
+    placeholder: 'Google 搜索...',
+    url: q => `https://www.google.com/search?q=${encodeURIComponent(q)}`
+  },
+  {
+    name: 'baidu',
+    label: '百度',
+    placeholder: '百度搜索...',
+    url: q => `https://www.baidu.com/s?wd=${encodeURIComponent(q)}`
+  },
+  {
+    name: 'bing',
+    label: 'Bing',
+    placeholder: 'Bing 搜索...',
+    url: q => `https://www.bing.com/search?q=${encodeURIComponent(q)}`
+  },
+  {
+    name: 'github',
+    label: 'github',
+    placeholder: 'GitHub 搜索...',
+    url: q => `https://github.com/search?q=${encodeURIComponent(q)}&type=repositories`
+  },
+  {
+    name: 'site',
+    label: '站内',
+    placeholder: '站内搜索...',
+    url: q => `/search?query=${encodeURIComponent(q)}`
+  }
 ];
 const selectedEngine = ref(searchEngines[0]);
-
 function selectEngine(engine) {
-  selectedEngine.value = engine;
+  selectedEngine.value = engine;
 }
-
 function clearSearch() {
-  searchQuery.value = '';
+  searchQuery.value = '';
 }
-
 const filteredCards = computed(() => {
-  if (!searchQuery.value) return cards.value;
-  return cards.value.filter(card => 
-    card.title.toLowerCase().includes(searchQuery.value.toLowerCase()) ||
-    card.url.toLowerCase().includes(searchQuery.value.toLowerCase())
-  );
+  if (!searchQuery.value) return cards.value;
+  return cards.value.filter(card => 
+    card.title.toLowerCase().includes(searchQuery.value.toLowerCase()) ||
+    card.url.toLowerCase().includes(searchQuery.value.toLowerCase())
+  );
 });
-
 onMounted(async () => {
-  const res = await getMenus();
-  menus.value = res.data;
-  if (menus.value.length) {
-    activeMenu.value = menus.value[0];
-    loadCards();
-  }
-  const adRes = await getAds();
-  leftAds.value = adRes.data.filter(ad => ad.position === 'left');
-  rightAds.value = adRes.data.filter(ad => ad.position === 'right');
-  
-  const friendRes = await getFriends();
-  friendLinks.value = friendRes.data;
+  const res = await getMenus();
+  menus.value = res.data;
+  if (menus.value.length) {
+    activeMenu.value = menus.value[0];
+    loadCards();
+  }
+  const adRes = await getAds();
+  leftAds.value = adRes.data.filter(ad => ad.position === 'left');
+  rightAds.value = adRes.data.filter(ad => ad.position === 'right');
+  
+  const friendRes = await getFriends();
+  friendLinks.value = friendRes.data;
 });
-
 async function selectMenu(menu, parentMenu = null) {
-  if (parentMenu) {
-    activeMenu.value = parentMenu;
-    activeSubMenu.value = menu;
-  } else {
-    activeMenu.value = menu;
-    activeSubMenu.value = null;
-  }
-  loadCards();
+  if (parentMenu) {
+    activeMenu.value = parentMenu;
+    activeSubMenu.value = menu;
+  } else {
+    activeMenu.value = menu;
+    activeSubMenu.value = null;
+  }
+  loadCards();
 }
-
 async function loadCards() {
-  if (!activeMenu.value) return;
-  const res = await getCards(activeMenu.value.id, activeSubMenu.value?.id);
-  cards.value = res.data;
+  if (!activeMenu.value) return;
+  const res = await getCards(activeMenu.value.id, activeSubMenu.value?.id);
+  cards.value = res.data;
 }
-
 async function handleSearch() {
-  if (!searchQuery.value.trim()) return;
-  if (selectedEngine.value.name === 'site') {
-    let found = false;
-    for (const menu of menus.value) {
-      const res = await getCards(menu.id);
-      const match = res.data.find(card =>
-        card.title.toLowerCase().includes(searchQuery.value.toLowerCase()) ||
-        card.url.toLowerCase().includes(searchQuery.value.toLowerCase())
-      );
-      if (match) {
-        activeMenu.value = menu;
-        cards.value = res.data;
-        setTimeout(() => {
-          const el = document.querySelector(`[data-card-id='${match.id}']`);
-          if (el) el.scrollIntoView({behavior: 'smooth', block: 'center'});
-        }, 100);
-        found = true;
-        break;
-      }
-    }
-    if (!found) {
-      alert('未找到相关内容');
-    }
-  } else {
-    const url = selectedEngine.value.url(searchQuery.value);
-    window.open(url, '_blank');
-  }
+  if (!searchQuery.value.trim()) return;
+  if (selectedEngine.value.name === 'site') {
+    let found = false;
+    for (const menu of menus.value) {
+      const res = await getCards(menu.id);
+      const match = res.data.find(card =>
+        card.title.toLowerCase().includes(searchQuery.value.toLowerCase()) ||
+        card.url.toLowerCase().includes(searchQuery.value.toLowerCase())
+      );
+      if (match) {
+        activeMenu.value = menu;
+        cards.value = res.data;
+        setTimeout(() => {
+          const el = document.querySelector(`[data-card-id='${match.id}']`);
+          if (el) el.scrollIntoView({behavior: 'smooth', block: 'center'});
+        }, 100);
+        found = true;
+        break;
+      }
+    }
+    if (!found) {
+      alert('未找到相关内容');
+    }
+  } else {
+    const url = selectedEngine.value.url(searchQuery.value);
+    window.open(url, '_blank');
+  }
 }
-
 function handleLogoError(event) {
-  event.target.style.display = 'none';
-  event.target.nextElementSibling.style.display = 'flex';
+  event.target.style.display = 'none';
+  event.target.nextElementSibling.style.display = 'flex';
 }
 </script>
 
@@ -729,3 +722,4 @@ function handleLogoError(event) {
   }
 }
 </style>
+
