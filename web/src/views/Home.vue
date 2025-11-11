@@ -54,14 +54,14 @@
     
     <footer class="footer">
       <div class="footer-content">
-                <button @click="showFriendLinks = true" class="friend-link-btn">
+        <button @click="showFriendLinks = true" class="friend-link-btn">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
             <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
           </svg>
           友情链接
         </button>
-                <p class="copyright">Copyright © 2025 Nav-Item | <a href="https://github.com/xuhxjx/Nav-Item" target="_blank" class="footer-link">Powered by xuhxjx</a></p>
+        <p class="copyright">Copyright © 2025 Nav-Item | <a href="https://github.com/eooce/Nav-Item" target="_blank" class="footer-link">Powered by eooce</a></p>
       </div>
     </footer>
 
@@ -261,7 +261,7 @@ function handleLogoError(event) {
 .engine-btn {
   border: none;
   background: none;
-  color: var(--text-color); /* 替换 #ffffff */
+  color: var(--text-color);
   font-size: .8rem ;
   padding: 2px 10px;
   border-radius: 4px;
@@ -269,19 +269,19 @@ function handleLogoError(event) {
   transition: color 0.2s, background 0.2s;
 }
 .engine-btn.active, .engine-btn:hover {
-  color: var(--menu-active-color); /* 替换 #399dff */
-  background: var(--engine-btn-hover-bg); /* 替换 #ffffff1a */
+  color: var(--menu-active-color);
+  background: var(--engine-btn-hover-bg);
 }
 
 .search-container {
   display: flex;
   align-items: center;
-  background: var(--search-bg); /* 替换 #b3b7b83b */
-  border-radius: 12px; /* 我帮你改小了一点 (原: 20px) */
+  background: var(--search-bg);
+  border-radius: 12px;
   padding: 0.3rem;
-  box-shadow: var(--search-shadow); /* 替换 rgba(0, 0, 0, 0.1) */
+  box-shadow: var(--search-shadow);
   backdrop-filter: blur(10px);
-  max-width: 400px; /* 我帮你改小了一点 (原: 480px) */
+  max-width: 400px;
   width: 92%;
   position: relative;
 }
@@ -291,13 +291,13 @@ function handleLogoError(event) {
   border: none;
   background: transparent;
   padding: .1rem .5rem;
-  font-size: 1rem; /* 我帮你改小了一点 (原: 1.2rem) */
-  color: var(--text-color); /* 替换 #ffffff */
+  font-size: 1rem;
+  color: var(--text-color);
   outline: none;
 }
 
 .search-input::placeholder {
-  color: var(--placeholder-color); /* 替换 #999 */
+  color: var(--placeholder-color);
 }
 
 .clear-btn {
@@ -309,16 +309,16 @@ function handleLogoError(event) {
   display: flex;
   align-items: center;
   padding: 0;
-  stroke: var(--text-color); /* 替换 stroke="white" */
+  stroke: var(--text-color);
 }
 
 .search-btn {
   background: #e9e9eb00;
-  color: var(--text-color); /* 替换 #ffffff */
+  color: var(--text-color);
   border: none;
   border-radius: 50%;
-  width: 36px; /* 我帮你改小了一点 (原: 40px) */
-  height: 36px; /* 我帮你改小了一点 (原: 40px) */
+  width: 36px;
+  height: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -328,12 +328,11 @@ function handleLogoError(event) {
 }
 
 .search-btn:hover {
-  background: var(--search-btn-hover-bg); /* 替换 #3367d6 */
+  background: var(--search-btn-hover-bg);
 }
 
 .home-container {
   min-height: 95vh;
-  /* 手机壁纸 */
   background-image: url('/background-mobile.webp');
   background-size: cover;
   background-position: center;
@@ -345,7 +344,6 @@ function handleLogoError(event) {
   padding-top: 50px; 
 }
 
-/* 电脑壁纸 */
 @media (min-width: 768px) {
   .home-container {
     background-image: url('/background-desktop.webp');
@@ -359,7 +357,7 @@ function handleLogoError(event) {
   left: 0;
   right: 0;
   bottom: 0;
-  background: var(--bg-overlay); /* 替换 rgba(0, 0, 0, 0.3) */
+  background: var(--bg-overlay);
   z-index: 1;
   transition: background 0.3s;
 }
@@ -379,10 +377,9 @@ function handleLogoError(event) {
   flex-direction: column;
   align-items: center;
   width: 100%;
-  max-width: 400px; /* 我帮你改小了一点 (原: 480px) */
+  max-width: 400px;
 }
 
-/* ... (广告和 wrapper 样式保持不变) ... */
 .content-wrapper {
   display: flex;
   max-width: 1400px;
@@ -418,16 +415,16 @@ function handleLogoError(event) {
   max-height: 160px;
   border-radius: 12px;
   box-shadow: 0 2px 12px rgba(0,0,0,0.12);
-  background: var(--ad-bg); /* 替换 #fff */
+  background: var(--ad-bg);
   object-fit: contain;
   margin: 0 auto;
 }
 .ad-placeholder {
-  background: var(--card-bg); /* 替换 rgba(255, 255, 255, 0.1) */
+  background: var(--card-bg);
   backdrop-filter: blur(10px);
-  border: 2px dashed var(--card-border); /* 替换 rgba(255, 255, 255, 0.3) */
+  border: 2px dashed var(--card-border);
   border-radius: 12px;
-  color: var(--text-color-light); /* 替换 rgba(255, 255, 255, 0.6) */
+  color: var(--text-color-light);
   padding: 2rem 1rem;
   text-align: center;
   font-size: 14px;
@@ -460,7 +457,7 @@ function handleLogoError(event) {
   gap: 8px;
   background: none;
   border: none;
-  color: var(--text-color-light); /* 替换 rgba(255, 255, 255, 0.8) */
+  color: var(--text-color-light);
   cursor: pointer;
   transition: all 0.3s ease;
   font-size: 14px;
@@ -468,19 +465,17 @@ function handleLogoError(event) {
 }
 
 .friend-link-btn:hover {
-  color: var(--link-color); /* 替换 #1976d2 */
+  color: var(--link-color);
   transform: translateY(-1px);
 }
 
-/* * *** 这是我修复的弹窗样式 ***
- */
 .modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: var(--modal-overlay-bg); /* 替换 rgba(0, 0, 0, 0.7) */
+  background: var(--modal-overlay-bg);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -489,7 +484,7 @@ function handleLogoError(event) {
 }
 
 .modal-content {
-  background: var(--modal-bg); /* 替换 #8585859c */
+  background: var(--modal-bg);
   border-radius: 16px;
   width: 55rem;
   height: 30rem;
@@ -506,15 +501,15 @@ function handleLogoError(event) {
   align-items: center;
   justify-content: space-between;
   padding: 10px 20px;
-  border-bottom: 1px solid var(--modal-header-border); /* 替换 #e5e7eb */
-  background: var(--modal-header-bg); /* 替换 #d3d6d8 */
+  border-bottom: 1px solid var(--modal-header-border);
+  background: var(--modal-header-bg);
 }
 
 .modal-header h3 {
   margin: 0;
   font-size: 24px;
   font-weight: 600;
-  color: var(--modal-text); /* 替换 #111827 */
+  color: var(--modal-text);
 }
 
 .close-btn {
@@ -523,13 +518,13 @@ function handleLogoError(event) {
   cursor: pointer;
   padding: 8px;
   border-radius: 8px;
-  color: var(--modal-text-light); /* 替换 #6b7280 */
+  color: var(--modal-text-light);
   transition: all 0.2s;
 }
 
 .close-btn:hover {
-  background: var(--modal-btn-hover-bg); /* 替换 #f3f4f6 */
-  color: var(--modal-btn-hover-color); /* 替换 #cf1313 */
+  background: var(--modal-btn-hover-bg);
+  color: var(--modal-btn-hover-color);
 }
 
 .modal-body {
@@ -558,19 +553,19 @@ function handleLogoError(event) {
   flex-direction: column;
   align-items: center;
   padding: 6px;
-  background: var(--modal-card-bg); /* 替换 #cfd3d661 */
+  background: var(--modal-card-bg);
   border-radius: 15px;
   text-decoration: none;
   color: inherit;
   transition: all 0.2s ease;
-  border: 1px solid var(--modal-card-border); /* 替换 #cfd3d661 */
+  border: 1px solid var(--modal-card-border);
   box-shadow: 0 2px 8px rgba(0,0,0,0.04);
 }
 
 .friend-link-card:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-  background: var(--modal-card-hover-bg); /* 替换 #ffffff8e */
+  background: var(--modal-card-hover-bg);
 }
 
 .friend-link-logo {
@@ -582,7 +577,7 @@ function handleLogoError(event) {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--bg-color); /* 替换 white */
+  background: var(--bg-color);
   box-shadow: 0 1px 4px rgba(0,0,0,0.06);
 }
 
@@ -598,8 +593,8 @@ function handleLogoError(event) {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--modal-placeholder-bg); /* 替换 #e5e7eb */
-  color: var(--modal-placeholder-text); /* 替换 #6b7280 */
+  background: var(--modal-placeholder-bg);
+  color: var(--modal-placeholder-text);
   font-size: 18px;
   font-weight: 600;
   border-radius: 8px;
@@ -609,25 +604,25 @@ function handleLogoError(event) {
   margin: 0;
   font-size: 13px;
   font-weight: 500;
-  color: var(--modal-text); /* 替换 #374151 */
+  color: var(--modal-text);
   text-align: center;
   line-height: 1.3;
   word-break: break-all;
 }
 
 .copyright {
-  color: var(--text-color-light); /* 替换 rgba(255, 255, 255, 0.8) */
+  color: var(--text-color-light);
   font-size: 14px;
   margin: 0;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 .footer-link {
-  color: var(--text-color-light); /* 替换 #ffffffcc */
+  color: var(--text-color-light);
   text-decoration: none;
   transition: color 0.2s;
 }
 .footer-link:hover {
-  color: var(--link-color); /* 替换 #1976d2 */
+  color: var(--link-color);
 }
 
 :deep(.menu-bar) {
@@ -669,11 +664,10 @@ function handleLogoError(event) {
   max-width: 90px;
   max-height: 160px;
   box-shadow: 0 2px 12px rgba(0,0,0,0.12);
-  background: var(--ad-bg); /* 替换 #fff */
+  background: var(--ad-bg);
   margin: 0 auto;
 }
 
-/* ... (响应式样式保持不变) ... */
 @media (max-width: 1200px) {
   .content-wrapper {
     flex-direction: column;
@@ -700,7 +694,7 @@ function handleLogoError(event) {
   
   .ad-space {
     height: 60px;
-  }
+SAP-1   }
   
   .ad-placeholder {
     height: 50px;
@@ -716,14 +710,14 @@ function handleLogoError(event) {
     gap: 8px;
     background: none;
     border: none;
-    color: var(--text-color-light); /* 替换 rgba(255, 255, 255, 0.8) */
+    color: var(--text-color-light);
     cursor: pointer;
     transition: all 0.3s ease;
     font-size: 0.7rem;
     padding: 0;
   }
   .copyright {
-    color: var(--text-color-light); /* 替换 rgba(255, 255, 255, 0.8) */
+    color: var(--text-color-light);
     font-size: 0.7rem;
     margin: 0;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
