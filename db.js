@@ -171,13 +171,17 @@ db.serialize(() => {
             { menu: 'Home', title: 'sub', url: 'https://sub.ab12.dpdns.org/admin', logo_url: 'https://nav.hxjx.hidns.co/icon/sub.png', desc: '订阅提醒'  },
             { menu: 'Home', title: 'openlist', url: 'hhttps://openlist.363689.xyz', logo_url: 'https://nav.hxjx.hidns.co/icon/oplist.svg', desc: 'openlist服务'  },
             { menu: 'Home', title: 'oplist', url: 'https://oplist.hxjx.hidns.co', logo_url: 'https://nav.hxjx.hidns.co/icon/oplist.svg', desc: 'openlist服务'  },
+            { menu: 'Home', title: 'olist', url: 'https://olist.netlib.re', logo_url: 'https://nav.hxjx.hidns.co/icon/oplist.svg', desc: 'openlist服务'  },            
             { menu: 'Home', title: 'alist', url: 'https://alist.alistv.netlib.re', logo_url: 'https://nav.hxjx.hidns.co/icon/alist.svg', desc: 'alist服务'  },
             { menu: 'Home', title: 'TXT', url: 'https://txt.wwp.qzz.io/xxsky', logo_url: 'https://nav.hxjx.hidns.co/icon/txt.svg', desc: '在线文本'  },
             { menu: 'Home', title: 'TXT', url: 'https://txt.wwo.qzz.io/xxsky', logo_url: 'https://nav.hxjx.hidns.co/icon/txt.svg', desc: '在线文本'  },
             { menu: 'Home', title: 'ssh-v4', url: 'https://ssh.363689.xyz', logo_url: 'https://nav.hxjx.hidns.co/icon/ssh.png', desc: 'ipv4的在线ssh'  },
             { menu: 'Home', title: 'TV', url: 'https://tv.363689.xyz', logo_url: 'https://nav.hxjx.hidns.co/icon/tv.png', desc: 'moontv'  },
+            { menu: 'Home', title: 'MV', url: 'https://mv.hxjx.dpdns.org', logo_url: 'https://nav.hxjx.hidns.co/icon/tv2.png', desc: 'moontv'  },            
             { menu: 'Home', title: '订阅转换', url: 'https://sub.363689.xyz/xu', logo_url: 'https://nav.hxjx.hidns.co/icon/sub.svg', desc: '节点订阅转换'  },
             { menu: 'Home', title: '订阅转换', url: 'https://sub.hxjx.qzz.io/xu', logo_url: 'https://nav.hxjx.hidns.co/icon/sub.svg', desc: '节点订阅转换'  },
+            { menu: 'Home', title: 'Kuma Mieru', url: 'https://kum.363689.xyz', logo_url: 'https://nav.hxjx.hidns.co/icon/kuma.png', desc: '服务在线监控'  },
+            { menu: 'Home', title: 'uptime-kuma', url: 'https://kuma.363689.xyz', logo_url: 'https://nav.hxjx.hidns.co/icon/kuma.svg', desc: '服务在线监控'  },            
             // Cused -> forum (保留你的自定义数据)
             { subMenu: 'forum', title: 'NodeSeek', url: 'https://www.nodeseek.com', logo_url: 'https://www.nodeseek.com/static/image/favicon/favicon-32x32.png', desc: '主机论坛' },
             { subMenu: 'forum', title: 'Linux do', url: 'https://linux.do', logo_url: 'https://linux.do/uploads/default/optimized/3X/9/d/9dd49731091ce8656e94433a26a3ef36062b3994_2_32x32.png', desc: '新的理想型社区' },
@@ -337,6 +341,7 @@ db.serialize(() => {
 
 
 module.exports = db; 
+
 
 
 
